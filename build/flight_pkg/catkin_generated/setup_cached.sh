@@ -7,4 +7,3 @@
 # new environment variables
 
 # modified environment variables
-export ROS_PACKAGE_PATH="/home/odroid/projects/nevangeliou_GapterUAV/src:/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg:/opt/ros/melodic/share"

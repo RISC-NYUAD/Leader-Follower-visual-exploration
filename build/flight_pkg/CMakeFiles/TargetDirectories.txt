@@ -102,6 +102,7 @@
 /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/_catkin_empty_exported_target.dir
 /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/actionlib_generate_messages_nodejs.dir
 /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/tf2_msgs_generate_messages_cpp.dir
+/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/staple_rectangle_indoor.dir
 /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir
 /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir
 /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir

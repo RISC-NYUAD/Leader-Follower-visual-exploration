@@ -386,6 +386,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake"
   "CMakeFiles/actionlib_generate_messages_nodejs.dir/DependInfo.cmake"
   "CMakeFiles/tf2_msgs_generate_messages_cpp.dir/DependInfo.cmake"
+  "CMakeFiles/staple_rectangle_indoor.dir/DependInfo.cmake"
   "CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/DependInfo.cmake"
   "CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/DependInfo.cmake"
   "CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/DependInfo.cmake"

@@ -1429,6 +1429,19 @@ tf2_msgs_generate_messages_cpp/fast:
 .PHONY : tf2_msgs_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named staple_rectangle_indoor
+
+# Build rule for target.
+staple_rectangle_indoor: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 staple_rectangle_indoor
+.PHONY : staple_rectangle_indoor
+
+# fast build rule for target.
+staple_rectangle_indoor/fast:
+	$(MAKE) -f CMakeFiles/staple_rectangle_indoor.dir/build.make CMakeFiles/staple_rectangle_indoor.dir/build
+.PHONY : staple_rectangle_indoor/fast
+
+#=============================================================================
 # Target rules for targets named dynamic_reconfigure_generate_messages_eus
 
 # Build rule for target.
@@ -1557,6 +1570,33 @@ gtest: cmake_check_build_system
 gtest/fast:
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
+
+src/NE_utilities.o: src/NE_utilities.cpp.o
+
+.PHONY : src/NE_utilities.o
+
+# target to build an object file
+src/NE_utilities.cpp.o:
+	$(MAKE) -f CMakeFiles/staple_rectangle_indoor.dir/build.make CMakeFiles/staple_rectangle_indoor.dir/src/NE_utilities.cpp.o
+.PHONY : src/NE_utilities.cpp.o
+
+src/NE_utilities.i: src/NE_utilities.cpp.i
+
+.PHONY : src/NE_utilities.i
+
+# target to preprocess a source file
+src/NE_utilities.cpp.i:
+	$(MAKE) -f CMakeFiles/staple_rectangle_indoor.dir/build.make CMakeFiles/staple_rectangle_indoor.dir/src/NE_utilities.cpp.i
+.PHONY : src/NE_utilities.cpp.i
+
+src/NE_utilities.s: src/NE_utilities.cpp.s
+
+.PHONY : src/NE_utilities.s
+
+# target to generate assembly for a file
+src/NE_utilities.cpp.s:
+	$(MAKE) -f CMakeFiles/staple_rectangle_indoor.dir/build.make CMakeFiles/staple_rectangle_indoor.dir/src/NE_utilities.cpp.s
+.PHONY : src/NE_utilities.cpp.s
 
 src/flight_try1.o: src/flight_try1.cpp.o
 
@@ -1801,6 +1841,33 @@ src/staple.cpp.s:
 	$(MAKE) -f CMakeFiles/staple.dir/build.make CMakeFiles/staple.dir/src/staple.cpp.s
 .PHONY : src/staple.cpp.s
 
+src/staple_rectangle_indoor.o: src/staple_rectangle_indoor.cpp.o
+
+.PHONY : src/staple_rectangle_indoor.o
+
+# target to build an object file
+src/staple_rectangle_indoor.cpp.o:
+	$(MAKE) -f CMakeFiles/staple_rectangle_indoor.dir/build.make CMakeFiles/staple_rectangle_indoor.dir/src/staple_rectangle_indoor.cpp.o
+.PHONY : src/staple_rectangle_indoor.cpp.o
+
+src/staple_rectangle_indoor.i: src/staple_rectangle_indoor.cpp.i
+
+.PHONY : src/staple_rectangle_indoor.i
+
+# target to preprocess a source file
+src/staple_rectangle_indoor.cpp.i:
+	$(MAKE) -f CMakeFiles/staple_rectangle_indoor.dir/build.make CMakeFiles/staple_rectangle_indoor.dir/src/staple_rectangle_indoor.cpp.i
+.PHONY : src/staple_rectangle_indoor.cpp.i
+
+src/staple_rectangle_indoor.s: src/staple_rectangle_indoor.cpp.s
+
+.PHONY : src/staple_rectangle_indoor.s
+
+# target to generate assembly for a file
+src/staple_rectangle_indoor.cpp.s:
+	$(MAKE) -f CMakeFiles/staple_rectangle_indoor.dir/build.make CMakeFiles/staple_rectangle_indoor.dir/src/staple_rectangle_indoor.cpp.s
+.PHONY : src/staple_rectangle_indoor.cpp.s
+
 src/velTest.o: src/velTest.cpp.o
 
 .PHONY : src/velTest.o
@@ -1938,6 +2005,7 @@ help:
 	@echo "... _catkin_empty_exported_target"
 	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... tf2_msgs_generate_messages_cpp"
+	@echo "... staple_rectangle_indoor"
 	@echo "... dynamic_reconfigure_generate_messages_eus"
 	@echo "... dynamic_reconfigure_generate_messages_nodejs"
 	@echo "... dynamic_reconfigure_generate_messages_lisp"
@@ -1948,6 +2016,9 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... src/NE_utilities.o"
+	@echo "... src/NE_utilities.i"
+	@echo "... src/NE_utilities.s"
 	@echo "... src/flight_try1.o"
 	@echo "... src/flight_try1.i"
 	@echo "... src/flight_try1.s"
@@ -1975,6 +2046,9 @@ help:
 	@echo "... src/staple.o"
 	@echo "... src/staple.i"
 	@echo "... src/staple.s"
+	@echo "... src/staple_rectangle_indoor.o"
+	@echo "... src/staple_rectangle_indoor.i"
+	@echo "... src/staple_rectangle_indoor.s"
 	@echo "... src/velTest.o"
 	@echo "... src/velTest.i"
 	@echo "... src/velTest.s"

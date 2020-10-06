@@ -4,7 +4,7 @@
 current_date_time="`date +%Y-%m-%d_%H-%M-%S`"
 echo $current_date_time
 
-current_source_dir=~/projects/gapter_UAV
+current_source_dir=~/projects/nevangeliou_GapterUAV
 
 source $current_source_dir/devel/setup.bash
 mkdir -p $current_source_dir/logs/$current_date_time

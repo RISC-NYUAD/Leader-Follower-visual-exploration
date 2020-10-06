@@ -50,6 +50,16 @@
   "file": "/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/flight_try1.cpp"
 },
 {
+  "directory": "/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"flight_pkg\\\" -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/include -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3  -std=c++0x -Wno-psabi  -g   -o CMakeFiles/staple_rectangle_indoor.dir/src/staple_rectangle_indoor.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/staple_rectangle_indoor.cpp",
+  "file": "/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/staple_rectangle_indoor.cpp"
+},
+{
+  "directory": "/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"flight_pkg\\\" -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/include -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3  -std=c++0x -Wno-psabi  -g   -o CMakeFiles/staple_rectangle_indoor.dir/src/NE_utilities.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/NE_utilities.cpp",
+  "file": "/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/NE_utilities.cpp"
+},
+{
   "directory": "/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/gtest/googlemock",
   "command": "/usr/bin/c++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -std=c++0x -Wno-psabi  -g -fPIC   -std=c++0x -Wno-psabi  -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gmock_main.dir/__/googletest/src/gtest-all.cc.o -c /usr/src/googletest/googletest/src/gtest-all.cc",
   "file": "/usr/src/googletest/googletest/src/gtest-all.cc"
