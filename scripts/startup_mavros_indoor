@@ -1,0 +1,118 @@
+#!/bin/bash
+# My first script
+
+current_date_time="`date +%Y-%m-%d_%H-%M-%S`"
+echo $current_date_time
+
+current_source_dir=~/projects/gapter_UAV
+
+source $current_source_dir/devel/setup.bash
+mkdir -p $current_source_dir/logs/$current_date_time
+
+rm $current_source_dir/latest
+ln -s $current_source_dir/$current_date_time $current_source_dir/latest
+
+sleep 3s
+
+roscore &
+echo -n $! >> ~/lastRunProcIds
+echo -n " " >> ~/lastRunProcIds
+
+sleep 3s
+
+roslaunch mavros apm.launch fcu_url:="/dev/toFCU:921600" &
+echo -n $! >> ~/lastRunProcIds
+echo -n " " >> ~/lastRunProcIds
+
+sleep 30s
+
+rosrun mavros mavsys rate --all 25 &
+echo -n $! >> ~/lastRunProcIds
+echo -n " " >> ~/lastRunProcIds
+
+#sleep 5s
+
+roslaunch vrpn_client_ros sample.launch server:=192.168.1.2 &
+echo -n $! >> ~/lastRunProcIds
+echo -n " " >> ~/lastRunProcIds
+
+sleep 5s
+
+rosrun vrpn_relay vrpn_relay &
+echo -n $! >> ~/lastRunProcIds
+echo -n " " >> ~/lastRunProcIds
+
+sleep 3s
+
+#rosrun flight_pkg setHome &
+#echo -n $! >> ~/lastRunProcIds
+#echo -n " " >> ~/lastRunProcIds
+
+python $current_source_dir/scripts/set_origin.py &
+echo -n $! >> ~/lastRunProcIds
+echo -n " " >> ~/lastRunProcIds
+
+sleep 10s
+
+#rosrun flight_pkg staple_rectangle_indoor &
+#echo -n $! >> ~/lastRunProcIds 
+#echo -n " " >> ~/lastRunProcIds 
+
+#prince udp
+#rosrun client_test client_test &
+#echo -n $! >> ~/lastRunProcIds &
+#echo -n " " >> ~/lastRunProcIds &
+
+echo "Press any key to exit..." &
+read varname
+
+for value in {1..5}
+	do 
+		echo "Stop attempt No." 
+		echo $value
+		rostopic pub /stop_execution std_msgs/Bool true
+done
+
+echo "Press any key to shutdown processes"
+read varname2
+
+echo "EXITING!!!!!!"
+
+kill $(cat ~/lastRunProcIds)
+sleep 1s
+killall roslaunch
+sleep 1s
+killall roscore
+sleep 1s
+killall rosrun
+sleep 1s
+rm ~/lastRunProcIds
+sleep 1s
+
+#rosrun flight_pkg staple &
+#echo -n $! >> ~/lastRunProcIds
+#echo -n " " >> ~/lastRunProcIds
+
+#rosrun out_of_controls setHome >> ~/TAR_logs/$current_date_time/controls.log
+
+#echo "------------------" >> ~/TAR_logs/$current_date_time/controls.log
+
+#Start roscore and mavros in one terminal
+#mate-terminal -e "bash -c 'echo \"\" > ~/lastRunProcIds & \
+#roscore & echo -n $! >> ~/lastRunProcIds & echo -n \" \" >> ~/lastRunProcIds & echo \"1\" \
+#roslaunch mavros apm.launch fcu_url:=\"/dev/ttyS0:921600\" & echo \"2\" & echo -n $! >> ~/lastRunProcIds & echo -n \" \" >> ~/lastRunProcIds' $SHELL "
+
+#& \ roslaunch mavros apm.launch fcu_url:=\"/dev/ttyS0:921600\" & echo -n $! >> ~/lastRunProcIds & echo -n \" \" >> ~/lastRunProcIds \
+
+#sleep 3s
+
+#mate-terminal -e "bash -c 'echo \"\" > ~/lastRunProcIds & \
+#cd $current_source_dir & echo \" $(pwd) \" & source /devel/setup.bash' $SHELL "
+#sleep 30s
+#mate-terminal -e "bash -c 'rosrun gps_measurements gps_measurements' $SHELL"
+#sleep 30s
+#mate-terminal -e "bash -c 'rosrun flight_pkg staple_rectangle' $SHELL"
+#sleep 30s
+#mate-terminal -e "bash -c 'rosrun ' $SHELL"
+
+echo "Done"
