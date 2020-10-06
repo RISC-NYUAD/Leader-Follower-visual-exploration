@@ -43,42 +43,42 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src
+CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build
+CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg
 
 # Include any dependencies generated for this target.
-include flight_pkg/CMakeFiles/pidWaypoint.dir/depend.make
+include CMakeFiles/pidWaypoint.dir/depend.make
 
 # Include the progress variables for this target.
-include flight_pkg/CMakeFiles/pidWaypoint.dir/progress.make
+include CMakeFiles/pidWaypoint.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include flight_pkg/CMakeFiles/pidWaypoint.dir/flags.make
+include CMakeFiles/pidWaypoint.dir/flags.make
 
-flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o: flight_pkg/CMakeFiles/pidWaypoint.dir/flags.make
-flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o: /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/pidWaypoint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/pidWaypoint.cpp
+CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o: CMakeFiles/pidWaypoint.dir/flags.make
+CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o: /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/pidWaypoint.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/pidWaypoint.cpp
 
-flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.i: cmake_force
+CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.i"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/pidWaypoint.cpp > CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/pidWaypoint.cpp > CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.i
 
-flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.s: cmake_force
+CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.s"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/pidWaypoint.cpp -o CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/pidWaypoint.cpp -o CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.s
 
-flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.requires:
+CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.requires:
 
-.PHONY : flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.requires
+.PHONY : CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.requires
 
-flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.provides: flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.requires
-	$(MAKE) -f flight_pkg/CMakeFiles/pidWaypoint.dir/build.make flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.provides.build
-.PHONY : flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.provides
+CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.provides: CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.requires
+	$(MAKE) -f CMakeFiles/pidWaypoint.dir/build.make CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.provides.build
+.PHONY : CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.provides
 
-flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.provides.build: flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o
+CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.provides.build: CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o
 
 
 # Object files for target pidWaypoint
@@ -88,8 +88,8 @@ pidWaypoint_OBJECTS = \
 # External object files for target pidWaypoint
 pidWaypoint_EXTERNAL_OBJECTS =
 
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint: flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint: flight_pkg/CMakeFiles/pidWaypoint.dir/build.make
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint: CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint: CMakeFiles/pidWaypoint.dir/build.make
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint: /opt/ros/melodic/lib/libmavros.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint: /usr/lib/arm-linux-gnueabihf/libGeographic.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint: /opt/ros/melodic/lib/libeigen_conversions.so
@@ -127,24 +127,24 @@ pidWaypoint_EXTERNAL_OBJECTS =
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint: /usr/lib/arm-linux-gnueabihf/libboost_atomic.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint: /usr/lib/arm-linux-gnueabihf/libpthread.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint: /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so.0.4
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint: flight_pkg/CMakeFiles/pidWaypoint.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pidWaypoint.dir/link.txt --verbose=$(VERBOSE)
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint: CMakeFiles/pidWaypoint.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint"
+	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pidWaypoint.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-flight_pkg/CMakeFiles/pidWaypoint.dir/build: /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint
+CMakeFiles/pidWaypoint.dir/build: /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/pidWaypoint
 
-.PHONY : flight_pkg/CMakeFiles/pidWaypoint.dir/build
+.PHONY : CMakeFiles/pidWaypoint.dir/build
 
-flight_pkg/CMakeFiles/pidWaypoint.dir/requires: flight_pkg/CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.requires
+CMakeFiles/pidWaypoint.dir/requires: CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o.requires
 
-.PHONY : flight_pkg/CMakeFiles/pidWaypoint.dir/requires
+.PHONY : CMakeFiles/pidWaypoint.dir/requires
 
-flight_pkg/CMakeFiles/pidWaypoint.dir/clean:
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -P CMakeFiles/pidWaypoint.dir/cmake_clean.cmake
-.PHONY : flight_pkg/CMakeFiles/pidWaypoint.dir/clean
+CMakeFiles/pidWaypoint.dir/clean:
+	$(CMAKE_COMMAND) -P CMakeFiles/pidWaypoint.dir/cmake_clean.cmake
+.PHONY : CMakeFiles/pidWaypoint.dir/clean
 
-flight_pkg/CMakeFiles/pidWaypoint.dir/depend:
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/odroid/projects/nevangeliou_GapterUAV/src /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/pidWaypoint.dir/DependInfo.cmake --color=$(COLOR)
-.PHONY : flight_pkg/CMakeFiles/pidWaypoint.dir/depend
+CMakeFiles/pidWaypoint.dir/depend:
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/pidWaypoint.dir/DependInfo.cmake --color=$(COLOR)
+.PHONY : CMakeFiles/pidWaypoint.dir/depend
 

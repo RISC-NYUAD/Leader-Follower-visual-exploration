@@ -43,42 +43,42 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src
+CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build
+CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg
 
 # Include any dependencies generated for this target.
-include flight_pkg/CMakeFiles/setHeading.dir/depend.make
+include CMakeFiles/setHeading.dir/depend.make
 
 # Include the progress variables for this target.
-include flight_pkg/CMakeFiles/setHeading.dir/progress.make
+include CMakeFiles/setHeading.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include flight_pkg/CMakeFiles/setHeading.dir/flags.make
+include CMakeFiles/setHeading.dir/flags.make
 
-flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o: flight_pkg/CMakeFiles/setHeading.dir/flags.make
-flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o: /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHeading.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/setHeading.dir/src/setHeading.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHeading.cpp
+CMakeFiles/setHeading.dir/src/setHeading.cpp.o: CMakeFiles/setHeading.dir/flags.make
+CMakeFiles/setHeading.dir/src/setHeading.cpp.o: /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHeading.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/setHeading.dir/src/setHeading.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/setHeading.dir/src/setHeading.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHeading.cpp
 
-flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.i: cmake_force
+CMakeFiles/setHeading.dir/src/setHeading.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/setHeading.dir/src/setHeading.cpp.i"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHeading.cpp > CMakeFiles/setHeading.dir/src/setHeading.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHeading.cpp > CMakeFiles/setHeading.dir/src/setHeading.cpp.i
 
-flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.s: cmake_force
+CMakeFiles/setHeading.dir/src/setHeading.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/setHeading.dir/src/setHeading.cpp.s"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHeading.cpp -o CMakeFiles/setHeading.dir/src/setHeading.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHeading.cpp -o CMakeFiles/setHeading.dir/src/setHeading.cpp.s
 
-flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o.requires:
+CMakeFiles/setHeading.dir/src/setHeading.cpp.o.requires:
 
-.PHONY : flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o.requires
+.PHONY : CMakeFiles/setHeading.dir/src/setHeading.cpp.o.requires
 
-flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o.provides: flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o.requires
-	$(MAKE) -f flight_pkg/CMakeFiles/setHeading.dir/build.make flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o.provides.build
-.PHONY : flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o.provides
+CMakeFiles/setHeading.dir/src/setHeading.cpp.o.provides: CMakeFiles/setHeading.dir/src/setHeading.cpp.o.requires
+	$(MAKE) -f CMakeFiles/setHeading.dir/build.make CMakeFiles/setHeading.dir/src/setHeading.cpp.o.provides.build
+.PHONY : CMakeFiles/setHeading.dir/src/setHeading.cpp.o.provides
 
-flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o.provides.build: flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o
+CMakeFiles/setHeading.dir/src/setHeading.cpp.o.provides.build: CMakeFiles/setHeading.dir/src/setHeading.cpp.o
 
 
 # Object files for target setHeading
@@ -88,8 +88,8 @@ setHeading_OBJECTS = \
 # External object files for target setHeading
 setHeading_EXTERNAL_OBJECTS =
 
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading: flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading: flight_pkg/CMakeFiles/setHeading.dir/build.make
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading: CMakeFiles/setHeading.dir/src/setHeading.cpp.o
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading: CMakeFiles/setHeading.dir/build.make
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading: /opt/ros/melodic/lib/libmavros.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading: /usr/lib/arm-linux-gnueabihf/libGeographic.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading: /opt/ros/melodic/lib/libeigen_conversions.so
@@ -127,24 +127,24 @@ setHeading_EXTERNAL_OBJECTS =
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading: /usr/lib/arm-linux-gnueabihf/libboost_atomic.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading: /usr/lib/arm-linux-gnueabihf/libpthread.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading: /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so.0.4
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading: flight_pkg/CMakeFiles/setHeading.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/setHeading.dir/link.txt --verbose=$(VERBOSE)
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading: CMakeFiles/setHeading.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading"
+	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/setHeading.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-flight_pkg/CMakeFiles/setHeading.dir/build: /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading
+CMakeFiles/setHeading.dir/build: /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHeading
 
-.PHONY : flight_pkg/CMakeFiles/setHeading.dir/build
+.PHONY : CMakeFiles/setHeading.dir/build
 
-flight_pkg/CMakeFiles/setHeading.dir/requires: flight_pkg/CMakeFiles/setHeading.dir/src/setHeading.cpp.o.requires
+CMakeFiles/setHeading.dir/requires: CMakeFiles/setHeading.dir/src/setHeading.cpp.o.requires
 
-.PHONY : flight_pkg/CMakeFiles/setHeading.dir/requires
+.PHONY : CMakeFiles/setHeading.dir/requires
 
-flight_pkg/CMakeFiles/setHeading.dir/clean:
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -P CMakeFiles/setHeading.dir/cmake_clean.cmake
-.PHONY : flight_pkg/CMakeFiles/setHeading.dir/clean
+CMakeFiles/setHeading.dir/clean:
+	$(CMAKE_COMMAND) -P CMakeFiles/setHeading.dir/cmake_clean.cmake
+.PHONY : CMakeFiles/setHeading.dir/clean
 
-flight_pkg/CMakeFiles/setHeading.dir/depend:
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/odroid/projects/nevangeliou_GapterUAV/src /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/setHeading.dir/DependInfo.cmake --color=$(COLOR)
-.PHONY : flight_pkg/CMakeFiles/setHeading.dir/depend
+CMakeFiles/setHeading.dir/depend:
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/setHeading.dir/DependInfo.cmake --color=$(COLOR)
+.PHONY : CMakeFiles/setHeading.dir/depend
 

@@ -43,42 +43,42 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src
+CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build
+CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg
 
 # Include any dependencies generated for this target.
-include flight_pkg/CMakeFiles/RoombaFollow.dir/depend.make
+include CMakeFiles/RoombaFollow.dir/depend.make
 
 # Include the progress variables for this target.
-include flight_pkg/CMakeFiles/RoombaFollow.dir/progress.make
+include CMakeFiles/RoombaFollow.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include flight_pkg/CMakeFiles/RoombaFollow.dir/flags.make
+include CMakeFiles/RoombaFollow.dir/flags.make
 
-flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o: flight_pkg/CMakeFiles/RoombaFollow.dir/flags.make
-flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o: /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/follow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoombaFollow.dir/src/follow.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/follow.cpp
+CMakeFiles/RoombaFollow.dir/src/follow.cpp.o: CMakeFiles/RoombaFollow.dir/flags.make
+CMakeFiles/RoombaFollow.dir/src/follow.cpp.o: /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/follow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/RoombaFollow.dir/src/follow.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoombaFollow.dir/src/follow.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/follow.cpp
 
-flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.i: cmake_force
+CMakeFiles/RoombaFollow.dir/src/follow.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoombaFollow.dir/src/follow.cpp.i"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/follow.cpp > CMakeFiles/RoombaFollow.dir/src/follow.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/follow.cpp > CMakeFiles/RoombaFollow.dir/src/follow.cpp.i
 
-flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.s: cmake_force
+CMakeFiles/RoombaFollow.dir/src/follow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoombaFollow.dir/src/follow.cpp.s"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/follow.cpp -o CMakeFiles/RoombaFollow.dir/src/follow.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/follow.cpp -o CMakeFiles/RoombaFollow.dir/src/follow.cpp.s
 
-flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.requires:
+CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.requires:
 
-.PHONY : flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.requires
+.PHONY : CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.requires
 
-flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.provides: flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.requires
-	$(MAKE) -f flight_pkg/CMakeFiles/RoombaFollow.dir/build.make flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.provides.build
-.PHONY : flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.provides
+CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.provides: CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.requires
+	$(MAKE) -f CMakeFiles/RoombaFollow.dir/build.make CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.provides.build
+.PHONY : CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.provides
 
-flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.provides.build: flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o
+CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.provides.build: CMakeFiles/RoombaFollow.dir/src/follow.cpp.o
 
 
 # Object files for target RoombaFollow
@@ -88,8 +88,8 @@ RoombaFollow_OBJECTS = \
 # External object files for target RoombaFollow
 RoombaFollow_EXTERNAL_OBJECTS =
 
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow: flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow: flight_pkg/CMakeFiles/RoombaFollow.dir/build.make
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow: CMakeFiles/RoombaFollow.dir/src/follow.cpp.o
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow: CMakeFiles/RoombaFollow.dir/build.make
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow: /opt/ros/melodic/lib/libmavros.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow: /usr/lib/arm-linux-gnueabihf/libGeographic.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow: /opt/ros/melodic/lib/libeigen_conversions.so
@@ -127,24 +127,24 @@ RoombaFollow_EXTERNAL_OBJECTS =
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow: /usr/lib/arm-linux-gnueabihf/libboost_atomic.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow: /usr/lib/arm-linux-gnueabihf/libpthread.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow: /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so.0.4
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow: flight_pkg/CMakeFiles/RoombaFollow.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RoombaFollow.dir/link.txt --verbose=$(VERBOSE)
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow: CMakeFiles/RoombaFollow.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow"
+	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RoombaFollow.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-flight_pkg/CMakeFiles/RoombaFollow.dir/build: /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow
+CMakeFiles/RoombaFollow.dir/build: /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/RoombaFollow
 
-.PHONY : flight_pkg/CMakeFiles/RoombaFollow.dir/build
+.PHONY : CMakeFiles/RoombaFollow.dir/build
 
-flight_pkg/CMakeFiles/RoombaFollow.dir/requires: flight_pkg/CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.requires
+CMakeFiles/RoombaFollow.dir/requires: CMakeFiles/RoombaFollow.dir/src/follow.cpp.o.requires
 
-.PHONY : flight_pkg/CMakeFiles/RoombaFollow.dir/requires
+.PHONY : CMakeFiles/RoombaFollow.dir/requires
 
-flight_pkg/CMakeFiles/RoombaFollow.dir/clean:
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -P CMakeFiles/RoombaFollow.dir/cmake_clean.cmake
-.PHONY : flight_pkg/CMakeFiles/RoombaFollow.dir/clean
+CMakeFiles/RoombaFollow.dir/clean:
+	$(CMAKE_COMMAND) -P CMakeFiles/RoombaFollow.dir/cmake_clean.cmake
+.PHONY : CMakeFiles/RoombaFollow.dir/clean
 
-flight_pkg/CMakeFiles/RoombaFollow.dir/depend:
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/odroid/projects/nevangeliou_GapterUAV/src /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/RoombaFollow.dir/DependInfo.cmake --color=$(COLOR)
-.PHONY : flight_pkg/CMakeFiles/RoombaFollow.dir/depend
+CMakeFiles/RoombaFollow.dir/depend:
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/RoombaFollow.dir/DependInfo.cmake --color=$(COLOR)
+.PHONY : CMakeFiles/RoombaFollow.dir/depend
 

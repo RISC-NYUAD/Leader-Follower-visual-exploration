@@ -1,8 +1,0 @@
-prefix=/home/odroid/projects/nevangeliou_GapterUAV/install
-
-Name: vrpn_measurements
-Description: Description of vrpn_measurements
-Version: 1.0.1
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: dynamic_reconfigure geometry_msgs message_runtime roscpp

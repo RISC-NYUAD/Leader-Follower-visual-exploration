@@ -1,8 +1,0 @@
-prefix=/home/odroid/projects/nevangeliou_GapterUAV/install
-
-Name: gps_measurements
-Description: Description of gps_measurements
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: mavros sensor_msgs

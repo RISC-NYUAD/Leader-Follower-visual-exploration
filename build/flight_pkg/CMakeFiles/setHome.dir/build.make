@@ -43,42 +43,42 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src
+CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build
+CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg
 
 # Include any dependencies generated for this target.
-include flight_pkg/CMakeFiles/setHome.dir/depend.make
+include CMakeFiles/setHome.dir/depend.make
 
 # Include the progress variables for this target.
-include flight_pkg/CMakeFiles/setHome.dir/progress.make
+include CMakeFiles/setHome.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include flight_pkg/CMakeFiles/setHome.dir/flags.make
+include CMakeFiles/setHome.dir/flags.make
 
-flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o: flight_pkg/CMakeFiles/setHome.dir/flags.make
-flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o: /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHome.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/setHome.dir/src/setHome.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHome.cpp
+CMakeFiles/setHome.dir/src/setHome.cpp.o: CMakeFiles/setHome.dir/flags.make
+CMakeFiles/setHome.dir/src/setHome.cpp.o: /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHome.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/setHome.dir/src/setHome.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/setHome.dir/src/setHome.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHome.cpp
 
-flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.i: cmake_force
+CMakeFiles/setHome.dir/src/setHome.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/setHome.dir/src/setHome.cpp.i"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHome.cpp > CMakeFiles/setHome.dir/src/setHome.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHome.cpp > CMakeFiles/setHome.dir/src/setHome.cpp.i
 
-flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.s: cmake_force
+CMakeFiles/setHome.dir/src/setHome.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/setHome.dir/src/setHome.cpp.s"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHome.cpp -o CMakeFiles/setHome.dir/src/setHome.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHome.cpp -o CMakeFiles/setHome.dir/src/setHome.cpp.s
 
-flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o.requires:
+CMakeFiles/setHome.dir/src/setHome.cpp.o.requires:
 
-.PHONY : flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o.requires
+.PHONY : CMakeFiles/setHome.dir/src/setHome.cpp.o.requires
 
-flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o.provides: flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o.requires
-	$(MAKE) -f flight_pkg/CMakeFiles/setHome.dir/build.make flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o.provides.build
-.PHONY : flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o.provides
+CMakeFiles/setHome.dir/src/setHome.cpp.o.provides: CMakeFiles/setHome.dir/src/setHome.cpp.o.requires
+	$(MAKE) -f CMakeFiles/setHome.dir/build.make CMakeFiles/setHome.dir/src/setHome.cpp.o.provides.build
+.PHONY : CMakeFiles/setHome.dir/src/setHome.cpp.o.provides
 
-flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o.provides.build: flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o
+CMakeFiles/setHome.dir/src/setHome.cpp.o.provides.build: CMakeFiles/setHome.dir/src/setHome.cpp.o
 
 
 # Object files for target setHome
@@ -88,8 +88,8 @@ setHome_OBJECTS = \
 # External object files for target setHome
 setHome_EXTERNAL_OBJECTS =
 
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome: flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome: flight_pkg/CMakeFiles/setHome.dir/build.make
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome: CMakeFiles/setHome.dir/src/setHome.cpp.o
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome: CMakeFiles/setHome.dir/build.make
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome: /opt/ros/melodic/lib/libmavros.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome: /usr/lib/arm-linux-gnueabihf/libGeographic.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome: /opt/ros/melodic/lib/libeigen_conversions.so
@@ -127,24 +127,24 @@ setHome_EXTERNAL_OBJECTS =
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome: /usr/lib/arm-linux-gnueabihf/libboost_atomic.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome: /usr/lib/arm-linux-gnueabihf/libpthread.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome: /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so.0.4
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome: flight_pkg/CMakeFiles/setHome.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome"
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/setHome.dir/link.txt --verbose=$(VERBOSE)
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome: CMakeFiles/setHome.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome"
+	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/setHome.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-flight_pkg/CMakeFiles/setHome.dir/build: /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome
+CMakeFiles/setHome.dir/build: /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/setHome
 
-.PHONY : flight_pkg/CMakeFiles/setHome.dir/build
+.PHONY : CMakeFiles/setHome.dir/build
 
-flight_pkg/CMakeFiles/setHome.dir/requires: flight_pkg/CMakeFiles/setHome.dir/src/setHome.cpp.o.requires
+CMakeFiles/setHome.dir/requires: CMakeFiles/setHome.dir/src/setHome.cpp.o.requires
 
-.PHONY : flight_pkg/CMakeFiles/setHome.dir/requires
+.PHONY : CMakeFiles/setHome.dir/requires
 
-flight_pkg/CMakeFiles/setHome.dir/clean:
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -P CMakeFiles/setHome.dir/cmake_clean.cmake
-.PHONY : flight_pkg/CMakeFiles/setHome.dir/clean
+CMakeFiles/setHome.dir/clean:
+	$(CMAKE_COMMAND) -P CMakeFiles/setHome.dir/cmake_clean.cmake
+.PHONY : CMakeFiles/setHome.dir/clean
 
-flight_pkg/CMakeFiles/setHome.dir/depend:
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/odroid/projects/nevangeliou_GapterUAV/src /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/setHome.dir/DependInfo.cmake --color=$(COLOR)
-.PHONY : flight_pkg/CMakeFiles/setHome.dir/depend
+CMakeFiles/setHome.dir/depend:
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/setHome.dir/DependInfo.cmake --color=$(COLOR)
+.PHONY : CMakeFiles/setHome.dir/depend
 
