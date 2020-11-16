@@ -23,6 +23,26 @@ string
 -
 cmath
 -
+cstring
+-
+vector
+-
+stdlib.h
+-
+inttypes.h
+-
+sstream
+-
+fstream
+-
+boost/date_time/posix_time/posix_time.hpp
+-
+boost/date_time/posix_time/ptime.hpp
+-
+boost/format.hpp
+-
+iostream
+-
 
 /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/NE_utilities.cpp
 NE_utilities.h

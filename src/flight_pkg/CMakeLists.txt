@@ -181,6 +181,9 @@ target_link_libraries(setDestination ${catkin_LIBRARIES})
 add_executable(setHeading src/setHeading.cpp)
 target_link_libraries(setHeading ${catkin_LIBRARIES})
 
+add_executable(simple_takeoff_land src/simple_takeoff_land.cpp src/NE_utilities.cpp)
+target_link_libraries(simple_takeoff_land ${catkin_LIBRARIES})
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use

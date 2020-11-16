@@ -43,7 +43,7 @@
 #include <tf/transform_datatypes.h>
 #include "NE_utilities.h"
 
-#define RATE 50 //Hz
+#define RATE 10 //Hz
 
 int ch;
 

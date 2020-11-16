@@ -1,0 +1,8 @@
+prefix=/home/odroid/projects/nevangeliou_GapterUAV/devel
+
+Name: rhombi_markers
+Description: Description of rhombi_markers
+Version: 0.1.2
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp roslaunch cv_bridge image_transport camera_info_manager sensor_msgs geometry_msgs std_msgs

@@ -1,0 +1,2 @@
+client_test:flight_pkg:gps_measurements:logging_measurements:rhombi_markers:vrpn_relay
+-DCATKIN_DEVEL_PREFIX=/home/odroid/projects/nevangeliou_GapterUAV/devel -DCMAKE_INSTALL_PREFIX=/home/odroid/projects/nevangeliou_GapterUAV/install -G Unix Makefiles
