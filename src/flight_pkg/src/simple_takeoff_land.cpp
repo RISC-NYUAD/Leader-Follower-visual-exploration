@@ -141,7 +141,7 @@ int main(int argc, char** argv)
   ros::Publisher local_pos_pub = nh.advertise<geometry_msgs::PoseStamped>("/mavros/setpoint_position/local", 1);
   ros::Subscriber currentPos = nh.subscribe<geometry_msgs::PoseStamped>("/mavros/local_position/pose", 1, pose_cb);
   ros::Publisher start_stop_execution = nh.advertise<std_msgs::Bool>("/rhombi_det_execution", 1);
-  ros::Subscriber stop_execution = nh.subscribe<std_msgs::Bool>("/startstop_rectangle", 1, stop_cb);
+  ros::Subscriber stop_execution = nh.subscribe<std_msgs::Bool>("/stop_experiment", 1, stop_cb);
 
   // allow the subscribers to initialize
   ROS_INFO("INITIALIZING...");

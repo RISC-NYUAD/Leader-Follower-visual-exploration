@@ -67,17 +67,18 @@ sleep 10s
 echo "Press any key to exit..." &
 read varname
 
-for value in {1..5}
-	do 
-		echo "Stop attempt No." 
-		echo $value
-		rostopic pub /stop_execution std_msgs/Bool true
-done
+#for value in {1..5}
+#	do 
+#		echo "Stop attempt No." 
+#		echo $value
+#		rostopic pub /stop_execution std_msgs/Bool true
+#done
 
-echo "Press any key to shutdown processes"
-read varname2
+#echo "Press any key to shutdown processes"
+#read varname2
 
 echo "EXITING!!!!!!"
+sleep 5s 
 
 kill $(cat ~/lastRunProcIds)
 sleep 1s
