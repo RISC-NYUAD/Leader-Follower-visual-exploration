@@ -60,6 +60,43 @@ CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg
 CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg
 
 #=============================================================================
+# Target rules for target CMakeFiles/simple_takeoff_land.dir
+
+# All Build rule for target.
+CMakeFiles/simple_takeoff_land.dir/all:
+	$(MAKE) -f CMakeFiles/simple_takeoff_land.dir/build.make CMakeFiles/simple_takeoff_land.dir/depend
+	$(MAKE) -f CMakeFiles/simple_takeoff_land.dir/build.make CMakeFiles/simple_takeoff_land.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=27,28,29 "Built target simple_takeoff_land"
+.PHONY : CMakeFiles/simple_takeoff_land.dir/all
+
+# Include target in all.
+all: CMakeFiles/simple_takeoff_land.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/simple_takeoff_land.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/simple_takeoff_land.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/simple_takeoff_land.dir/rule
+
+# Convenience name for target.
+simple_takeoff_land: CMakeFiles/simple_takeoff_land.dir/rule
+
+.PHONY : simple_takeoff_land
+
+# clean rule for target.
+CMakeFiles/simple_takeoff_land.dir/clean:
+	$(MAKE) -f CMakeFiles/simple_takeoff_land.dir/build.make CMakeFiles/simple_takeoff_land.dir/clean
+.PHONY : CMakeFiles/simple_takeoff_land.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/simple_takeoff_land.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/setHeading.dir
 
 # All Build rule for target.
@@ -245,43 +282,6 @@ clean: CMakeFiles/RoombaFollow.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/staple.dir
-
-# All Build rule for target.
-CMakeFiles/staple.dir/all:
-	$(MAKE) -f CMakeFiles/staple.dir/build.make CMakeFiles/staple.dir/depend
-	$(MAKE) -f CMakeFiles/staple.dir/build.make CMakeFiles/staple.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=27,28 "Built target staple"
-.PHONY : CMakeFiles/staple.dir/all
-
-# Include target in all.
-all: CMakeFiles/staple.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/staple.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/staple.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-.PHONY : CMakeFiles/staple.dir/rule
-
-# Convenience name for target.
-staple: CMakeFiles/staple.dir/rule
-
-.PHONY : staple
-
-# clean rule for target.
-CMakeFiles/staple.dir/clean:
-	$(MAKE) -f CMakeFiles/staple.dir/build.make CMakeFiles/staple.dir/clean
-.PHONY : CMakeFiles/staple.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/staple.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/pidWaypoint.dir
 
 # All Build rule for target.
@@ -325,7 +325,7 @@ clean: CMakeFiles/pidWaypoint.dir/clean
 CMakeFiles/velTest.dir/all:
 	$(MAKE) -f CMakeFiles/velTest.dir/build.make CMakeFiles/velTest.dir/depend
 	$(MAKE) -f CMakeFiles/velTest.dir/build.make CMakeFiles/velTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=34,35 "Built target velTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=37,38 "Built target velTest"
 .PHONY : CMakeFiles/velTest.dir/all
 
 # Include target in all.
@@ -423,8 +423,8 @@ clean: CMakeFiles/flight_pkg_genlisp.dir/clean
 # Target rules for target CMakeFiles/flight_pkg_generate_messages_lisp.dir
 
 # All Build rule for target.
-CMakeFiles/flight_pkg_generate_messages_lisp.dir/all: CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 CMakeFiles/flight_pkg_generate_messages_lisp.dir/all: CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+CMakeFiles/flight_pkg_generate_messages_lisp.dir/all: CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 	$(MAKE) -f CMakeFiles/flight_pkg_generate_messages_lisp.dir/build.make CMakeFiles/flight_pkg_generate_messages_lisp.dir/depend
 	$(MAKE) -f CMakeFiles/flight_pkg_generate_messages_lisp.dir/build.make CMakeFiles/flight_pkg_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target flight_pkg_generate_messages_lisp"
@@ -456,8 +456,8 @@ clean: CMakeFiles/flight_pkg_generate_messages_lisp.dir/clean
 # Target rules for target CMakeFiles/flight_pkg_generate_messages_py.dir
 
 # All Build rule for target.
-CMakeFiles/flight_pkg_generate_messages_py.dir/all: CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 CMakeFiles/flight_pkg_generate_messages_py.dir/all: CMakeFiles/std_msgs_generate_messages_py.dir/all
+CMakeFiles/flight_pkg_generate_messages_py.dir/all: CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 	$(MAKE) -f CMakeFiles/flight_pkg_generate_messages_py.dir/build.make CMakeFiles/flight_pkg_generate_messages_py.dir/depend
 	$(MAKE) -f CMakeFiles/flight_pkg_generate_messages_py.dir/build.make CMakeFiles/flight_pkg_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target flight_pkg_generate_messages_py"
@@ -586,9 +586,9 @@ clean: CMakeFiles/flight_pkg_generate_messages_cpp.dir/clean
 # Target rules for target CMakeFiles/flight_pkg_generate_messages.dir
 
 # All Build rule for target.
-CMakeFiles/flight_pkg_generate_messages.dir/all: CMakeFiles/flight_pkg_generate_messages_cpp.dir/all
 CMakeFiles/flight_pkg_generate_messages.dir/all: CMakeFiles/flight_pkg_generate_messages_lisp.dir/all
 CMakeFiles/flight_pkg_generate_messages.dir/all: CMakeFiles/flight_pkg_generate_messages_py.dir/all
+CMakeFiles/flight_pkg_generate_messages.dir/all: CMakeFiles/flight_pkg_generate_messages_cpp.dir/all
 CMakeFiles/flight_pkg_generate_messages.dir/all: CMakeFiles/flight_pkg_generate_messages_nodejs.dir/all
 CMakeFiles/flight_pkg_generate_messages.dir/all: CMakeFiles/flight_pkg_generate_messages_eus.dir/all
 	$(MAKE) -f CMakeFiles/flight_pkg_generate_messages.dir/build.make CMakeFiles/flight_pkg_generate_messages.dir/depend
@@ -656,38 +656,6 @@ clean: CMakeFiles/tf_generate_messages_py.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/tf_generate_messages_lisp.dir
-
-# All Build rule for target.
-CMakeFiles/tf_generate_messages_lisp.dir/all:
-	$(MAKE) -f CMakeFiles/tf_generate_messages_lisp.dir/build.make CMakeFiles/tf_generate_messages_lisp.dir/depend
-	$(MAKE) -f CMakeFiles/tf_generate_messages_lisp.dir/build.make CMakeFiles/tf_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target tf_generate_messages_lisp"
-.PHONY : CMakeFiles/tf_generate_messages_lisp.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/tf_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tf_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-.PHONY : CMakeFiles/tf_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-tf_generate_messages_lisp: CMakeFiles/tf_generate_messages_lisp.dir/rule
-
-.PHONY : tf_generate_messages_lisp
-
-# clean rule for target.
-CMakeFiles/tf_generate_messages_lisp.dir/clean:
-	$(MAKE) -f CMakeFiles/tf_generate_messages_lisp.dir/build.make CMakeFiles/tf_generate_messages_lisp.dir/clean
-.PHONY : CMakeFiles/tf_generate_messages_lisp.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/tf_generate_messages_lisp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/tf_generate_messages_eus.dir
 
 # All Build rule for target.
@@ -716,6 +684,134 @@ CMakeFiles/tf_generate_messages_eus.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/tf_generate_messages_eus.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/tf_generate_messages_cpp.dir
+
+# All Build rule for target.
+CMakeFiles/tf_generate_messages_cpp.dir/all:
+	$(MAKE) -f CMakeFiles/tf_generate_messages_cpp.dir/build.make CMakeFiles/tf_generate_messages_cpp.dir/depend
+	$(MAKE) -f CMakeFiles/tf_generate_messages_cpp.dir/build.make CMakeFiles/tf_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target tf_generate_messages_cpp"
+.PHONY : CMakeFiles/tf_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/tf_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tf_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/tf_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+tf_generate_messages_cpp: CMakeFiles/tf_generate_messages_cpp.dir/rule
+
+.PHONY : tf_generate_messages_cpp
+
+# clean rule for target.
+CMakeFiles/tf_generate_messages_cpp.dir/clean:
+	$(MAKE) -f CMakeFiles/tf_generate_messages_cpp.dir/build.make CMakeFiles/tf_generate_messages_cpp.dir/clean
+.PHONY : CMakeFiles/tf_generate_messages_cpp.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/tf_generate_messages_cpp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/dynamic_reconfigure_generate_messages_py.dir
+
+# All Build rule for target.
+CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all:
+	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/depend
+	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target dynamic_reconfigure_generate_messages_py"
+.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
+
+# Convenience name for target.
+dynamic_reconfigure_generate_messages_py: CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
+
+.PHONY : dynamic_reconfigure_generate_messages_py
+
+# clean rule for target.
+CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean:
+	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
+.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir
+
+# All Build rule for target.
+CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all:
+	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/depend
+	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target dynamic_reconfigure_generate_messages_nodejs"
+.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+dynamic_reconfigure_generate_messages_nodejs: CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule
+
+.PHONY : dynamic_reconfigure_generate_messages_nodejs
+
+# clean rule for target.
+CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
+.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir
+
+# All Build rule for target.
+CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/all:
+	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/depend
+	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target dynamic_reconfigure_generate_messages_lisp"
+.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+dynamic_reconfigure_generate_messages_lisp: CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
+
+.PHONY : dynamic_reconfigure_generate_messages_lisp
+
+# clean rule for target.
+CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/clean:
+	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/clean
+.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
@@ -1077,6 +1173,70 @@ clean: CMakeFiles/std_msgs_generate_messages_py.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/tf_generate_messages_lisp.dir
+
+# All Build rule for target.
+CMakeFiles/tf_generate_messages_lisp.dir/all:
+	$(MAKE) -f CMakeFiles/tf_generate_messages_lisp.dir/build.make CMakeFiles/tf_generate_messages_lisp.dir/depend
+	$(MAKE) -f CMakeFiles/tf_generate_messages_lisp.dir/build.make CMakeFiles/tf_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target tf_generate_messages_lisp"
+.PHONY : CMakeFiles/tf_generate_messages_lisp.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/tf_generate_messages_lisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tf_generate_messages_lisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/tf_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+tf_generate_messages_lisp: CMakeFiles/tf_generate_messages_lisp.dir/rule
+
+.PHONY : tf_generate_messages_lisp
+
+# clean rule for target.
+CMakeFiles/tf_generate_messages_lisp.dir/clean:
+	$(MAKE) -f CMakeFiles/tf_generate_messages_lisp.dir/build.make CMakeFiles/tf_generate_messages_lisp.dir/clean
+.PHONY : CMakeFiles/tf_generate_messages_lisp.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/tf_generate_messages_lisp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/trajectory_msgs_generate_messages_cpp.dir
+
+# All Build rule for target.
+CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_cpp"
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_cpp: CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_cpp
+
+# clean rule for target.
+CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/clean
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/geographic_msgs_generate_messages_py.dir
 
 # All Build rule for target.
@@ -1233,6 +1393,70 @@ CMakeFiles/doxygen.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/doxygen.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/dynamic_reconfigure_gencfg.dir
+
+# All Build rule for target.
+CMakeFiles/dynamic_reconfigure_gencfg.dir/all:
+	$(MAKE) -f CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make CMakeFiles/dynamic_reconfigure_gencfg.dir/depend
+	$(MAKE) -f CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make CMakeFiles/dynamic_reconfigure_gencfg.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target dynamic_reconfigure_gencfg"
+.PHONY : CMakeFiles/dynamic_reconfigure_gencfg.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/dynamic_reconfigure_gencfg.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dynamic_reconfigure_gencfg.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
+
+# Convenience name for target.
+dynamic_reconfigure_gencfg: CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
+
+.PHONY : dynamic_reconfigure_gencfg
+
+# clean rule for target.
+CMakeFiles/dynamic_reconfigure_gencfg.dir/clean:
+	$(MAKE) -f CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make CMakeFiles/dynamic_reconfigure_gencfg.dir/clean
+.PHONY : CMakeFiles/dynamic_reconfigure_gencfg.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/dynamic_reconfigure_gencfg.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/std_msgs_generate_messages_cpp.dir
+
+# All Build rule for target.
+CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_cpp"
+.PHONY : CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_cpp: CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : std_msgs_generate_messages_cpp
+
+# clean rule for target.
+CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+.PHONY : CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
@@ -1433,8 +1657,8 @@ clean: CMakeFiles/flight_pkg_generate_messages_nodejs.dir/clean
 # Target rules for target CMakeFiles/flight_pkg_generate_messages_eus.dir
 
 # All Build rule for target.
-CMakeFiles/flight_pkg_generate_messages_eus.dir/all: CMakeFiles/std_msgs_generate_messages_eus.dir/all
 CMakeFiles/flight_pkg_generate_messages_eus.dir/all: CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+CMakeFiles/flight_pkg_generate_messages_eus.dir/all: CMakeFiles/std_msgs_generate_messages_eus.dir/all
 	$(MAKE) -f CMakeFiles/flight_pkg_generate_messages_eus.dir/build.make CMakeFiles/flight_pkg_generate_messages_eus.dir/depend
 	$(MAKE) -f CMakeFiles/flight_pkg_generate_messages_eus.dir/build.make CMakeFiles/flight_pkg_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=7 "Built target flight_pkg_generate_messages_eus"
@@ -1623,38 +1847,6 @@ clean: CMakeFiles/actionlib_generate_messages_lisp.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/dynamic_reconfigure_generate_messages_py.dir
-
-# All Build rule for target.
-CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all:
-	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/depend
-	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target dynamic_reconfigure_generate_messages_py"
-.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_generate_messages_py: CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
-
-.PHONY : dynamic_reconfigure_generate_messages_py
-
-# clean rule for target.
-CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean:
-	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
-.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/diagnostic_msgs_generate_messages_py.dir
 
 # All Build rule for target.
@@ -1715,38 +1907,6 @@ CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/actionlib_msgs_generate_messages_eus.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/geographic_msgs_generate_messages_nodejs.dir
-
-# All Build rule for target.
-CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target geographic_msgs_generate_messages_nodejs"
-.PHONY : CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-.PHONY : CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-geographic_msgs_generate_messages_nodejs: CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : geographic_msgs_generate_messages_nodejs
-
-# clean rule for target.
-CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/clean
-.PHONY : CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
@@ -1853,7 +2013,7 @@ clean: CMakeFiles/std_msgs_generate_messages_eus.dir/clean
 CMakeFiles/staple_rectangle.dir/all:
 	$(MAKE) -f CMakeFiles/staple_rectangle.dir/build.make CMakeFiles/staple_rectangle.dir/depend
 	$(MAKE) -f CMakeFiles/staple_rectangle.dir/build.make CMakeFiles/staple_rectangle.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=29,30 "Built target staple_rectangle"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=32,33 "Built target staple_rectangle"
 .PHONY : CMakeFiles/staple_rectangle.dir/all
 
 # Include target in all.
@@ -3228,13 +3388,210 @@ clean: CMakeFiles/tf2_msgs_generate_messages_cpp.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/trajectory_msgs_generate_messages_eus.dir
+
+# All Build rule for target.
+CMakeFiles/trajectory_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_eus"
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_eus.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/trajectory_msgs_generate_messages_eus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_eus: CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_eus
+
+# clean rule for target.
+CMakeFiles/trajectory_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_eus.dir/clean
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_eus.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/trajectory_msgs_generate_messages_eus.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/trajectory_msgs_generate_messages_lisp.dir
+
+# All Build rule for target.
+CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_lisp"
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_lisp: CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_lisp
+
+# clean rule for target.
+CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/staple.dir
+
+# All Build rule for target.
+CMakeFiles/staple.dir/all:
+	$(MAKE) -f CMakeFiles/staple.dir/build.make CMakeFiles/staple.dir/depend
+	$(MAKE) -f CMakeFiles/staple.dir/build.make CMakeFiles/staple.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=30,31 "Built target staple"
+.PHONY : CMakeFiles/staple.dir/all
+
+# Include target in all.
+all: CMakeFiles/staple.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/staple.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/staple.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/staple.dir/rule
+
+# Convenience name for target.
+staple: CMakeFiles/staple.dir/rule
+
+.PHONY : staple
+
+# clean rule for target.
+CMakeFiles/staple.dir/clean:
+	$(MAKE) -f CMakeFiles/staple.dir/build.make CMakeFiles/staple.dir/clean
+.PHONY : CMakeFiles/staple.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/staple.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir
+
+# All Build rule for target.
+CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_nodejs"
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_nodejs: CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_nodejs
+
+# clean rule for target.
+CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/clean
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/geographic_msgs_generate_messages_nodejs.dir
+
+# All Build rule for target.
+CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target geographic_msgs_generate_messages_nodejs"
+.PHONY : CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+geographic_msgs_generate_messages_nodejs: CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : geographic_msgs_generate_messages_nodejs
+
+# clean rule for target.
+CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/clean
+.PHONY : CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/geographic_msgs_generate_messages_nodejs.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/trajectory_msgs_generate_messages_py.dir
+
+# All Build rule for target.
+CMakeFiles/trajectory_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target trajectory_msgs_generate_messages_py"
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/trajectory_msgs_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_py: CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_py
+
+# clean rule for target.
+CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean
+.PHONY : CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/trajectory_msgs_generate_messages_py.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/staple_rectangle_indoor.dir
 
 # All Build rule for target.
 CMakeFiles/staple_rectangle_indoor.dir/all:
 	$(MAKE) -f CMakeFiles/staple_rectangle_indoor.dir/build.make CMakeFiles/staple_rectangle_indoor.dir/depend
 	$(MAKE) -f CMakeFiles/staple_rectangle_indoor.dir/build.make CMakeFiles/staple_rectangle_indoor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=31,32,33 "Built target staple_rectangle_indoor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=34,35,36 "Built target staple_rectangle_indoor"
 .PHONY : CMakeFiles/staple_rectangle_indoor.dir/all
 
 # Include target in all.
@@ -3293,166 +3650,6 @@ CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir
-
-# All Build rule for target.
-CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all:
-	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/depend
-	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target dynamic_reconfigure_generate_messages_nodejs"
-.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_generate_messages_nodejs: CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/rule
-
-.PHONY : dynamic_reconfigure_generate_messages_nodejs
-
-# clean rule for target.
-CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
-.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir
-
-# All Build rule for target.
-CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/all:
-	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/depend
-	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target dynamic_reconfigure_generate_messages_lisp"
-.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_generate_messages_lisp: CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
-
-.PHONY : dynamic_reconfigure_generate_messages_lisp
-
-# clean rule for target.
-CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/clean:
-	$(MAKE) -f CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/clean
-.PHONY : CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/tf_generate_messages_cpp.dir
-
-# All Build rule for target.
-CMakeFiles/tf_generate_messages_cpp.dir/all:
-	$(MAKE) -f CMakeFiles/tf_generate_messages_cpp.dir/build.make CMakeFiles/tf_generate_messages_cpp.dir/depend
-	$(MAKE) -f CMakeFiles/tf_generate_messages_cpp.dir/build.make CMakeFiles/tf_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target tf_generate_messages_cpp"
-.PHONY : CMakeFiles/tf_generate_messages_cpp.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/tf_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tf_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-.PHONY : CMakeFiles/tf_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-tf_generate_messages_cpp: CMakeFiles/tf_generate_messages_cpp.dir/rule
-
-.PHONY : tf_generate_messages_cpp
-
-# clean rule for target.
-CMakeFiles/tf_generate_messages_cpp.dir/clean:
-	$(MAKE) -f CMakeFiles/tf_generate_messages_cpp.dir/build.make CMakeFiles/tf_generate_messages_cpp.dir/clean
-.PHONY : CMakeFiles/tf_generate_messages_cpp.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/tf_generate_messages_cpp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/std_msgs_generate_messages_cpp.dir
-
-# All Build rule for target.
-CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_cpp"
-.PHONY : CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-.PHONY : CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# clean rule for target.
-CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-.PHONY : CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/dynamic_reconfigure_gencfg.dir
-
-# All Build rule for target.
-CMakeFiles/dynamic_reconfigure_gencfg.dir/all:
-	$(MAKE) -f CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make CMakeFiles/dynamic_reconfigure_gencfg.dir/depend
-	$(MAKE) -f CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make CMakeFiles/dynamic_reconfigure_gencfg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num= "Built target dynamic_reconfigure_gencfg"
-.PHONY : CMakeFiles/dynamic_reconfigure_gencfg.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/dynamic_reconfigure_gencfg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dynamic_reconfigure_gencfg.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles 0
-.PHONY : CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
-
-# Convenience name for target.
-dynamic_reconfigure_gencfg: CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
-
-.PHONY : dynamic_reconfigure_gencfg
-
-# clean rule for target.
-CMakeFiles/dynamic_reconfigure_gencfg.dir/clean:
-	$(MAKE) -f CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make CMakeFiles/dynamic_reconfigure_gencfg.dir/clean
-.PHONY : CMakeFiles/dynamic_reconfigure_gencfg.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/dynamic_reconfigure_gencfg.dir/clean
 
 .PHONY : clean
 

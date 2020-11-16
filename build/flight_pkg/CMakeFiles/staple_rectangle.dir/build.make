@@ -43,42 +43,42 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg
+CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg
+CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build
 
 # Include any dependencies generated for this target.
-include CMakeFiles/staple_rectangle.dir/depend.make
+include flight_pkg/CMakeFiles/staple_rectangle.dir/depend.make
 
 # Include the progress variables for this target.
-include CMakeFiles/staple_rectangle.dir/progress.make
+include flight_pkg/CMakeFiles/staple_rectangle.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include CMakeFiles/staple_rectangle.dir/flags.make
+include flight_pkg/CMakeFiles/staple_rectangle.dir/flags.make
 
-CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o: CMakeFiles/staple_rectangle.dir/flags.make
-CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o: /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/flight_try1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/flight_try1.cpp
+flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o: flight_pkg/CMakeFiles/staple_rectangle.dir/flags.make
+flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o: /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/flight_try1.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o"
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/flight_try1.cpp
 
-CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.i: cmake_force
+flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/flight_try1.cpp > CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.i
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/flight_try1.cpp > CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.i
 
-CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.s: cmake_force
+flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/flight_try1.cpp -o CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.s
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/flight_try1.cpp -o CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.s
 
-CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.requires:
+flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.requires:
 
-.PHONY : CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.requires
+.PHONY : flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.requires
 
-CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.provides: CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.requires
-	$(MAKE) -f CMakeFiles/staple_rectangle.dir/build.make CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.provides.build
-.PHONY : CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.provides
+flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.provides: flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.requires
+	$(MAKE) -f flight_pkg/CMakeFiles/staple_rectangle.dir/build.make flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.provides.build
+.PHONY : flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.provides
 
-CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.provides.build: CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o
+flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.provides.build: flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o
 
 
 # Object files for target staple_rectangle
@@ -88,8 +88,8 @@ staple_rectangle_OBJECTS = \
 # External object files for target staple_rectangle
 staple_rectangle_EXTERNAL_OBJECTS =
 
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: CMakeFiles/staple_rectangle.dir/build.make
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: flight_pkg/CMakeFiles/staple_rectangle.dir/build.make
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /opt/ros/melodic/lib/libmavros.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /usr/lib/arm-linux-gnueabihf/libGeographic.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /opt/ros/melodic/lib/libeigen_conversions.so
@@ -109,6 +109,7 @@ staple_rectangle_EXTERNAL_OBJECTS =
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /opt/ros/melodic/lib/libactionlib.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /opt/ros/melodic/lib/libmessage_filters.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /opt/ros/melodic/lib/libtf2.so
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /opt/ros/melodic/lib/libroscpp.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /usr/lib/arm-linux-gnueabihf/libboost_filesystem.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /opt/ros/melodic/lib/librosconsole.so
@@ -127,24 +128,24 @@ staple_rectangle_EXTERNAL_OBJECTS =
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /usr/lib/arm-linux-gnueabihf/libboost_atomic.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /usr/lib/arm-linux-gnueabihf/libpthread.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so.0.4
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: CMakeFiles/staple_rectangle.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle"
-	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/staple_rectangle.dir/link.txt --verbose=$(VERBOSE)
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle: flight_pkg/CMakeFiles/staple_rectangle.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle"
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/staple_rectangle.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/staple_rectangle.dir/build: /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle
+flight_pkg/CMakeFiles/staple_rectangle.dir/build: /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/staple_rectangle
 
-.PHONY : CMakeFiles/staple_rectangle.dir/build
+.PHONY : flight_pkg/CMakeFiles/staple_rectangle.dir/build
 
-CMakeFiles/staple_rectangle.dir/requires: CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.requires
+flight_pkg/CMakeFiles/staple_rectangle.dir/requires: flight_pkg/CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o.requires
 
-.PHONY : CMakeFiles/staple_rectangle.dir/requires
+.PHONY : flight_pkg/CMakeFiles/staple_rectangle.dir/requires
 
-CMakeFiles/staple_rectangle.dir/clean:
-	$(CMAKE_COMMAND) -P CMakeFiles/staple_rectangle.dir/cmake_clean.cmake
-.PHONY : CMakeFiles/staple_rectangle.dir/clean
+flight_pkg/CMakeFiles/staple_rectangle.dir/clean:
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -P CMakeFiles/staple_rectangle.dir/cmake_clean.cmake
+.PHONY : flight_pkg/CMakeFiles/staple_rectangle.dir/clean
 
-CMakeFiles/staple_rectangle.dir/depend:
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/staple_rectangle.dir/DependInfo.cmake --color=$(COLOR)
-.PHONY : CMakeFiles/staple_rectangle.dir/depend
+flight_pkg/CMakeFiles/staple_rectangle.dir/depend:
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/odroid/projects/nevangeliou_GapterUAV/src /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/staple_rectangle.dir/DependInfo.cmake --color=$(COLOR)
+.PHONY : flight_pkg/CMakeFiles/staple_rectangle.dir/depend
 

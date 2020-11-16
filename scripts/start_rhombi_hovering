@@ -1,0 +1,50 @@
+#!/bin/bash
+# My second script
+
+current_source_dir=~/projects/nevangeliou_GapterUAV
+cd $current_source_dir
+source $current_source_dir/devel/setup.bash
+
+sleep 1s
+
+roslaunch spinnaker_sdk_camera_driver acquisition.launch &
+echo -n $! >> ~/lastRunProcIds
+echo -n " " >> ~/lastRunProcIds
+
+sleep 10s
+
+rosrun logging_measurements rhombi_experiment &
+echo -n $! >> ~/lastRunProcIds_exp
+echo -n " " >> ~/lastRunProcIds_exp
+
+sleep 5s
+
+rosrun rhombi_markers rhombi_markers &
+echo -n $! >> ~/lastRunProcIds_exp
+echo -n " " >> lastRunProcIds_exp
+
+sleep 5s
+
+echo "SEND CHARACTER TO START FYLING"
+read varname
+
+sleep 2s
+
+rosrun flight_pkg simple_takeoff_land &
+echo -n $! >> ~/lastRunProcIds_exp
+echo -n " " >> ~/lastRunProcIds_exp
+
+read varname
+
+echo "Exit character received"
+
+for value in {1..2}
+	do 
+		echo "Stop attempt No." 
+		echo $value
+		rostopic pub /stop_experiment std_msgs/Bool "data: true"
+done
+
+sleep 10s
+
+echo "Done"

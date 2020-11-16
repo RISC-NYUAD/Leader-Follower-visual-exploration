@@ -1,0 +1,1 @@
+time_elapsed(Sec);Vicon position (x);y; z;Vicon orientation (q_w);q_x;q_y;q_z;FCU linear velocity (v_x);v_y;v_z;FCU local position (x);y;z;FCU local orientation (q_w);q_x;q_y;q_z;Rhombi frame detection seq;Rhombi frame detection time stamp;Rhombis detected position;x;y;z;Rhombis detected orientation (q);q_x;q_y;q_z;

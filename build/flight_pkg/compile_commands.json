@@ -1,6 +1,16 @@
 [
 {
   "directory": "/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"flight_pkg\\\" -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/include -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3  -std=c++0x -Wno-psabi  -g   -o CMakeFiles/simple_takeoff_land.dir/src/simple_takeoff_land.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/simple_takeoff_land.cpp",
+  "file": "/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/simple_takeoff_land.cpp"
+},
+{
+  "directory": "/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"flight_pkg\\\" -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/include -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3  -std=c++0x -Wno-psabi  -g   -o CMakeFiles/simple_takeoff_land.dir/src/NE_utilities.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/NE_utilities.cpp",
+  "file": "/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/NE_utilities.cpp"
+},
+{
+  "directory": "/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg",
   "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"flight_pkg\\\" -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/include -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3  -std=c++0x -Wno-psabi  -g   -o CMakeFiles/setHeading.dir/src/setHeading.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHeading.cpp",
   "file": "/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/setHeading.cpp"
 },
@@ -26,11 +36,6 @@
 },
 {
   "directory": "/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg",
-  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"flight_pkg\\\" -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/include -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3  -std=c++0x -Wno-psabi  -g   -o CMakeFiles/staple.dir/src/staple.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/staple.cpp",
-  "file": "/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/staple.cpp"
-},
-{
-  "directory": "/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg",
   "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"flight_pkg\\\" -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/include -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3  -std=c++0x -Wno-psabi  -g   -o CMakeFiles/pidWaypoint.dir/src/pidWaypoint.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/pidWaypoint.cpp",
   "file": "/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/pidWaypoint.cpp"
 },
@@ -48,6 +53,11 @@
   "directory": "/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg",
   "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"flight_pkg\\\" -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/include -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3  -std=c++0x -Wno-psabi  -g   -o CMakeFiles/staple_rectangle.dir/src/flight_try1.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/flight_try1.cpp",
   "file": "/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/flight_try1.cpp"
+},
+{
+  "directory": "/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"flight_pkg\\\" -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/include -I/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3  -std=c++0x -Wno-psabi  -g   -o CMakeFiles/staple.dir/src/staple.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/staple.cpp",
+  "file": "/home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/staple.cpp"
 },
 {
   "directory": "/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg",

@@ -43,42 +43,42 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg
+CMAKE_SOURCE_DIR = /home/odroid/projects/nevangeliou_GapterUAV/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg
+CMAKE_BINARY_DIR = /home/odroid/projects/nevangeliou_GapterUAV/build
 
 # Include any dependencies generated for this target.
-include CMakeFiles/velTest.dir/depend.make
+include flight_pkg/CMakeFiles/velTest.dir/depend.make
 
 # Include the progress variables for this target.
-include CMakeFiles/velTest.dir/progress.make
+include flight_pkg/CMakeFiles/velTest.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include CMakeFiles/velTest.dir/flags.make
+include flight_pkg/CMakeFiles/velTest.dir/flags.make
 
-CMakeFiles/velTest.dir/src/velTest.cpp.o: CMakeFiles/velTest.dir/flags.make
-CMakeFiles/velTest.dir/src/velTest.cpp.o: /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/velTest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/velTest.dir/src/velTest.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/velTest.dir/src/velTest.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/velTest.cpp
+flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o: flight_pkg/CMakeFiles/velTest.dir/flags.make
+flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o: /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/velTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o"
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/velTest.dir/src/velTest.cpp.o -c /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/velTest.cpp
 
-CMakeFiles/velTest.dir/src/velTest.cpp.i: cmake_force
+flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/velTest.dir/src/velTest.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/velTest.cpp > CMakeFiles/velTest.dir/src/velTest.cpp.i
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/velTest.cpp > CMakeFiles/velTest.dir/src/velTest.cpp.i
 
-CMakeFiles/velTest.dir/src/velTest.cpp.s: cmake_force
+flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/velTest.dir/src/velTest.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/velTest.cpp -o CMakeFiles/velTest.dir/src/velTest.cpp.s
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg/src/velTest.cpp -o CMakeFiles/velTest.dir/src/velTest.cpp.s
 
-CMakeFiles/velTest.dir/src/velTest.cpp.o.requires:
+flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o.requires:
 
-.PHONY : CMakeFiles/velTest.dir/src/velTest.cpp.o.requires
+.PHONY : flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o.requires
 
-CMakeFiles/velTest.dir/src/velTest.cpp.o.provides: CMakeFiles/velTest.dir/src/velTest.cpp.o.requires
-	$(MAKE) -f CMakeFiles/velTest.dir/build.make CMakeFiles/velTest.dir/src/velTest.cpp.o.provides.build
-.PHONY : CMakeFiles/velTest.dir/src/velTest.cpp.o.provides
+flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o.provides: flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o.requires
+	$(MAKE) -f flight_pkg/CMakeFiles/velTest.dir/build.make flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o.provides.build
+.PHONY : flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o.provides
 
-CMakeFiles/velTest.dir/src/velTest.cpp.o.provides.build: CMakeFiles/velTest.dir/src/velTest.cpp.o
+flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o.provides.build: flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o
 
 
 # Object files for target velTest
@@ -88,8 +88,8 @@ velTest_OBJECTS = \
 # External object files for target velTest
 velTest_EXTERNAL_OBJECTS =
 
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: CMakeFiles/velTest.dir/src/velTest.cpp.o
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: CMakeFiles/velTest.dir/build.make
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: flight_pkg/CMakeFiles/velTest.dir/build.make
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /opt/ros/melodic/lib/libmavros.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /usr/lib/arm-linux-gnueabihf/libGeographic.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /opt/ros/melodic/lib/libeigen_conversions.so
@@ -109,6 +109,7 @@ velTest_EXTERNAL_OBJECTS =
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /opt/ros/melodic/lib/libactionlib.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /opt/ros/melodic/lib/libmessage_filters.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /opt/ros/melodic/lib/libtf2.so
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /opt/ros/melodic/lib/libroscpp.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /usr/lib/arm-linux-gnueabihf/libboost_filesystem.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /opt/ros/melodic/lib/librosconsole.so
@@ -127,24 +128,24 @@ velTest_EXTERNAL_OBJECTS =
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /usr/lib/arm-linux-gnueabihf/libboost_atomic.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /usr/lib/arm-linux-gnueabihf/libpthread.so
 /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so.0.4
-/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: CMakeFiles/velTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest"
-	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/velTest.dir/link.txt --verbose=$(VERBOSE)
+/home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest: flight_pkg/CMakeFiles/velTest.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/odroid/projects/nevangeliou_GapterUAV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest"
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/velTest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/velTest.dir/build: /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest
+flight_pkg/CMakeFiles/velTest.dir/build: /home/odroid/projects/nevangeliou_GapterUAV/devel/lib/flight_pkg/velTest
 
-.PHONY : CMakeFiles/velTest.dir/build
+.PHONY : flight_pkg/CMakeFiles/velTest.dir/build
 
-CMakeFiles/velTest.dir/requires: CMakeFiles/velTest.dir/src/velTest.cpp.o.requires
+flight_pkg/CMakeFiles/velTest.dir/requires: flight_pkg/CMakeFiles/velTest.dir/src/velTest.cpp.o.requires
 
-.PHONY : CMakeFiles/velTest.dir/requires
+.PHONY : flight_pkg/CMakeFiles/velTest.dir/requires
 
-CMakeFiles/velTest.dir/clean:
-	$(CMAKE_COMMAND) -P CMakeFiles/velTest.dir/cmake_clean.cmake
-.PHONY : CMakeFiles/velTest.dir/clean
+flight_pkg/CMakeFiles/velTest.dir/clean:
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -P CMakeFiles/velTest.dir/cmake_clean.cmake
+.PHONY : flight_pkg/CMakeFiles/velTest.dir/clean
 
-CMakeFiles/velTest.dir/depend:
-	cd /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/velTest.dir/DependInfo.cmake --color=$(COLOR)
-.PHONY : CMakeFiles/velTest.dir/depend
+flight_pkg/CMakeFiles/velTest.dir/depend:
+	cd /home/odroid/projects/nevangeliou_GapterUAV/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/odroid/projects/nevangeliou_GapterUAV/src /home/odroid/projects/nevangeliou_GapterUAV/src/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg /home/odroid/projects/nevangeliou_GapterUAV/build/flight_pkg/CMakeFiles/velTest.dir/DependInfo.cmake --color=$(COLOR)
+.PHONY : flight_pkg/CMakeFiles/velTest.dir/depend
 
