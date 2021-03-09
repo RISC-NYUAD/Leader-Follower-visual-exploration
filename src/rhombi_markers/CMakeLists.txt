@@ -12,8 +12,8 @@ SET(aruco_DIR ~/github_packages/aruco-3.1.12/build)
 find_package(aruco REQUIRED )
 MESSAGE(STATUS "aruco found, version: ${aruco_VERSION} in dir ${aruco_INCLUDE_DIRS}")
 
-#find_package(OpenCV 3 REQUIRED )
-find_package(OpenCV 3.4 REQUIRED PATHS "~/github_packages/opencv/build")
+find_package(OpenCV 3 REQUIRED )
+#find_package(OpenCV 3.4 REQUIRED PATHS "~/github_packages/opencv/build")
 MESSAGE(STATUS "OpenCV found, version: ${OpenCV_VERSION} in dir ${OpenCV_INCLUDE_DIRS}")
 
 find_package( Eigen3 REQUIRED )
@@ -28,6 +28,9 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   geometry_msgs
   std_msgs
+  tf_conversions
+  eigen_conversions
+  tf
 )
 
 include_directories(
@@ -50,6 +53,9 @@ catkin_package(
     sensor_msgs
     geometry_msgs
     std_msgs
+    tf_conversions
+    eigen_conversions
+    tf
 )
 #MESSAGE("1")
 #MESSAGE(STATUS ${OpenCV_LIBS} )
@@ -66,3 +72,12 @@ catkin_package(
 
 add_executable(rhombi_markers src/rhombi_markers.cpp)
 target_link_libraries(rhombi_markers ${aruco_LIBS} ${OpenCV_LIBS} ${catkin_LIBRARIES})
+
+add_executable(rhombi_markers_v2 src/rhombi_markers_v2.cpp)
+target_link_libraries(rhombi_markers_v2 ${aruco_LIBS} ${OpenCV_LIBS} ${catkin_LIBRARIES})
+
+add_executable(rhombi_detect src/rhombi_detect.cpp)
+target_link_libraries(rhombi_detect ${aruco_LIBS} ${OpenCV_LIBS} ${catkin_LIBRARIES})
+
+add_executable(rhombi_geom_extractor src/rhombi_geom_extractor.cpp)
+target_link_libraries(rhombi_geom_extractor ${aruco_LIBS} ${OpenCV_LIBS} ${catkin_LIBRARIES} -lstdc++fs)

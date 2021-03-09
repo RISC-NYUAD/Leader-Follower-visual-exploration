@@ -37,4 +37,7 @@ double get_distance2D(double, double, double, double);
 
 double seconds_from_epoch(boost::posix_time::ptime const&);
 
+inline double deg2rad(double x) {return x*M_PI/180;}
+inline double rad2deg(double x) {return x*180/M_PI;}
+
 #endif

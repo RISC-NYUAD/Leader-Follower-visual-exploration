@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
     message_generation
     dynamic_reconfigure
     geometry_msgs
+    sensor_msgs
     std_msgs
     roscpp
     tf
@@ -118,7 +119,12 @@ catkin_package(
    mavros
    geometry_msgs
    roscpp 
-#  DEPENDS system_lib
+    dynamic_reconfigure
+    sensor_msgs
+    std_msgs
+    roscpp
+    tf
+    diagnostic_updater
 )
 
 
@@ -132,19 +138,6 @@ include_directories(
  include src ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} ${VICON_SDK_INCLUDE_DIR}
 )
 
-## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/flight_pkg.cpp
-# )
-
-## Add cmake target dependencies of the library
-## as an example, code may need to be generated before libraries
-## either from message generation or dynamic reconfigure
-# add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-## Declare a C++ executable
-## With catkin_make all packages are built within a single CMake context
-## The recommended prefix ensures that target names across packages don't collide
 add_executable(days_before_logs src/more_logging.cpp)
 target_link_libraries(days_before_logs ${catkin_LIBRARIES})
 
@@ -175,6 +168,15 @@ target_link_libraries(RoombaFollowScan ${catkin_LIBRARIES})
 add_executable(setHome src/setHome.cpp)
 target_link_libraries(setHome ${catkin_LIBRARIES})
 
+add_executable(setHomeOutdoor src/setHomeOutdoor.cpp)
+target_link_libraries(setHomeOutdoor ${catkin_LIBRARIES})
+
+add_executable(setHomeOutdoor2 src/setHomeOutdoor2.cpp)
+target_link_libraries(setHomeOutdoor2 ${catkin_LIBRARIES})
+
+add_executable(setHomeIndoor src/setHomeIndoor.cpp)
+target_link_libraries(setHomeIndoor ${catkin_LIBRARIES})
+
 add_executable(setDestination src/setDestination.cpp)
 target_link_libraries(setDestination ${catkin_LIBRARIES})
 
@@ -183,6 +185,19 @@ target_link_libraries(setHeading ${catkin_LIBRARIES})
 
 add_executable(simple_takeoff_land src/simple_takeoff_land.cpp src/NE_utilities.cpp)
 target_link_libraries(simple_takeoff_land ${catkin_LIBRARIES})
+
+add_executable(simple_takeoff_land_outdoor src/simple_takeoff_land_outdoor.cpp src/NE_utilities.cpp)
+target_link_libraries(simple_takeoff_land_outdoor ${catkin_LIBRARIES})
+
+add_executable(staple_rectangle_outdoor src/staple_rectangle_outdoor.cpp src/NE_utilities.cpp)
+target_link_libraries(staple_rectangle_outdoor ${catkin_LIBRARIES})
+
+add_executable(staple_rectangle_outdoor5 src/staple_rectangle_outdoor_v5.cpp src/NE_utilities.cpp)
+target_link_libraries(staple_rectangle_outdoor5 ${catkin_LIBRARIES})
+
+add_executable(staple_rectangle_outdoor6 src/staple_rectangle_outdoor_v6.cpp src/NE_utilities.cpp)
+target_link_libraries(staple_rectangle_outdoor6 ${catkin_LIBRARIES})
+
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

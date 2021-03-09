@@ -30,3 +30,6 @@ target_link_libraries(vrpn_log_all   ${catkin_LIBRARIES})
 
 add_executable(rhombi_experiment src/rhombi_experiment.cpp src/NE_utilities.cpp)
 target_link_libraries(rhombi_experiment   ${catkin_LIBRARIES})
+
+add_executable(rhombi_logger src/rhombi_logger.cpp src/NE_utilities.cpp)
+target_link_libraries(rhombi_logger ${catkin_LIBRARIES})

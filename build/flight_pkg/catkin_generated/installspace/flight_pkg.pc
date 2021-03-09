@@ -1,8 +1,0 @@
-prefix=/home/odroid/projects/nevangeliou_GapterUAV/install
-
-Name: flight_pkg
-Description: Description of flight_pkg
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: mavros geometry_msgs roscpp

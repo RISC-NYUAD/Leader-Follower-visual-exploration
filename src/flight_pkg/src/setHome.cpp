@@ -38,7 +38,6 @@ int main(int argc, char **argv)
 
   ros::Subscriber state_sub = home_handle.subscribe<mavros_msgs::State>("mavros/state", 1, state_cb);
   ros::ServiceClient home_set = home_handle.serviceClient<mavros_msgs::CommandHome>("/mavros/cmd/set_home",1);
-
   ros::Publisher origin_pub = home_handle.advertise<mavros_msgs::Mavlink>("mavlink/to", 1000);
 
   ros::Rate rate(20.0);

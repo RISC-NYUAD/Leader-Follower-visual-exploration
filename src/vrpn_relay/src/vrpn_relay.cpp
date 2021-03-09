@@ -56,7 +56,7 @@ ros::Publisher to_mavros_visiontopic, pose_output_topic;
 //Define the name for each vicon object using the exact same notation as in vicon server. Dont' mess up!!!
 //std::string object_names[num_objects]={"KinovaBase","KinovaGripper", "ZedCamera"};
 //std::string object_names[num_objects]={"KinovaBase","KinovaGripper", "MavicProo"};
-std::string object_name ("Gapter_2");
+std::string object_name ("Gapter1");
 
 //OLD FUNCTION_FOR_REFERENCE_ONLY
 void vrpnPoseFeedback(geometry_msgs::PoseStampedConstPtr vrpnPose_){

@@ -41,12 +41,14 @@
 #include <std_msgs/Bool.h>
 #include "NE_utilities.h"
 
-#define RATE 10 //Hz
+#define RATE 30 //Hz
 
-std::string object_name="Gapter_2";
+std::string object_name="Gapter1";
 std::ofstream outfile;
 ros::Time exp_init;
 double elapsed = 0.0;
+
+int frameID=-1;
 
 geometry_msgs::TwistStamped FCUvel;
 geometry_msgs::PoseStamped  FCUPose;
@@ -56,24 +58,23 @@ bool has_run1,has_run2,has_run3;
 bool experiment_runs=true;
 
 void vrpnPoseFeedback(geometry_msgs::PoseStampedConstPtr vrpnPose_){
-    //elapsed = ros::Time::now().toSec()-exp_init.toSec();
-    //Boost time returns the time based on computer clock
-    //boost::posix_time::ptime date_time = boost::posix_time::microsec_clock::universal_time();
-    //elapsed = seconds_from_epoch(date_time);
     if(has_run1 && has_run2 && has_run3){
-    outfile << ros::Time::now() << ";"
-	//VRPN pose
-        << vrpnPose_->pose.position.x << ";" << vrpnPose_->pose.position.y << ";" << vrpnPose_->pose.position.z << ";" 
-        << vrpnPose_->pose.orientation.w << ";" <<  vrpnPose_->pose.orientation.x << ";" <<  vrpnPose_->pose.orientation.y << ";" <<  vrpnPose_->pose.orientation.z << ";" 
-	<< FCUvel.twist.linear.x << ";" << FCUvel.twist.linear.y << ";" << FCUvel.twist.linear.z << ";"
-        //Flgiht controller pose
-	<< FCUPose.pose.position.x << ";" << FCUPose.pose.position.y << ";" << FCUPose.pose.position.z << ";"
-        << FCUPose.pose.orientation.w << ";" << FCUPose.pose.orientation.x << ";" << FCUPose.pose.orientation.y << ";" << FCUPose.pose.orientation.z << ";"
-        //Discovered rhombis pose
-        <<RhombiPoses.header.seq << ";" << RhombiPoses.header.stamp << ";" ;
-        for(auto n : RhombiPoses.poses)
-        outfile << n.position.x << ";" << n.position.y << ";" << n.position.z << ";" << n.orientation.x << ";" << n.orientation.y << ";" << n.orientation.z << ";" << n.orientation.w << ";"
-        << std::endl;
+	if(frameID!=RhombiPoses.header.seq){
+		frameID = RhombiPoses.header.seq;
+		//VRPN pose
+		outfile << vrpnPose_-> header.stamp << ";"
+		<< vrpnPose_->pose.position.x << ";" << vrpnPose_->pose.position.y << ";" << vrpnPose_->pose.position.z << ";" 
+		<< vrpnPose_->pose.orientation.w << ";" <<  vrpnPose_->pose.orientation.x << ";" <<  vrpnPose_->pose.orientation.y << ";" <<  vrpnPose_->pose.orientation.z << ";" 
+		//Flgiht controller pose
+		<< FCUPose.header.stamp << ";"
+		<< FCUPose.pose.position.x << ";" << FCUPose.pose.position.y << ";" << FCUPose.pose.position.z << ";"
+		<< FCUPose.pose.orientation.w << ";" << FCUPose.pose.orientation.x << ";" << FCUPose.pose.orientation.y << ";" << FCUPose.pose.orientation.z << ";"
+		//Discovered rhombis pose
+		<<RhombiPoses.header.seq << ";" << RhombiPoses.header.stamp << ";" ;
+		for(auto n : RhombiPoses.poses)
+		outfile << n.position.x << ";" << n.position.y << ";" << n.position.z << ";" 
+			<< n.orientation.w << ";" << n.orientation.x << ";" << n.orientation.y << ";" << n.orientation.z << std::endl;
+	}
     }
 }
 
@@ -105,13 +106,13 @@ int main(int argc, char** argv)
 	ros::Subscriber currentPos = nh.subscribe<geometry_msgs::PoseStamped>("/mavros/local_position/pose", 1, &FCUPose_cb);
 	ros::Subscriber rhombiPos= nh.subscribe<geometry_msgs::PoseArray>("/"+object_name+"/pose_stamped", 1, &RhombiPose_cb);
 	ros::Rate loop_rate(RATE);
-    	ros::Subscriber tracking_Start=nh.subscribe<std_msgs::Bool> ("/rhombi_det_execution",1, &experimentHandleFeedback);
+    ros::Subscriber tracking_Start=nh.subscribe<std_msgs::Bool> ("/rhombi_det_execution",1, &experimentHandleFeedback);
 	//   Initialization - Log file
-	std::string usr=get_username();
-	std::string fileName;
+    std::string fileName;
+    nh.getParam("filePath", fileName);
 	//try to get username, if not save to home folder
-	if(usr!="?") fileName="/home/"+usr+"/projects/nevangeliou_GapterUAV/logs/Rhombi_Experiments/" + object_name + "log_"+date_filename();
-	else fileName=date_filename();
+	if(!fileName.empty()) fileName += object_name + "log_"+ date_filename();
+	else fileName = "~/" + object_name + "log_"+ date_filename();
 	outfile.open(fileName, std::ios::out | std::ios::app);
 	if (outfile.fail()){
 	    throw std::ios_base::failure(std::strerror(errno));
@@ -120,25 +121,27 @@ int main(int argc, char** argv)
 	ROS_INFO("Saving data to: %s", fileName.c_str());
 	// 	make sure write fails with exception if something is wrong
 	outfile.exceptions(outfile.exceptions() | std::ios::failbit | std::ifstream::badbit);
-	outfile << "time_elapsed(Sec)"<< ";" 
-	<< "Vicon position (x)" << ";" << "y" << ";" << " z" << ";" 
-	<< "Vicon orientation (q_w)" << ";" <<  "q_x" << ";" <<  "q_y" << ";" <<  "q_z" << ";"
-	<< "FCU linear velocity (v_x)" << ";" <<  "v_y" << ";" <<  "v_z" << ";"
-	<< "FCU local position (x)" << ";" <<  "y" << ";" <<  "z" << ";"
-	<< "FCU local orientation (q_w)" << ";" <<  "q_x" << ";" <<  "q_y" << ";" <<  "q_z" << ";" 
-	<< "Rhombi frame detection seq" << ";" << "Rhombi frame detection time stamp" << ";"
-	<< "Rhombis detected position" << ";" <<  "x" << ";" <<  "y" << ";" <<  "z" << ";" 
-	<< "Rhombis detected orientation (q)" << ";" <<  "q_x" << ";" <<  "q_y" << ";" <<  "q_z" << ";" 
-	<<std::endl;
+	outfile << "Vicon_timestamp(epoch)"<< ";" 
+	//VRPN Pose
+	<< "Vicon_pos(x)" << ";" << "y" << ";" << " z" << ";" 
+	<< "Vicon_quat(q_w)" << ";" <<  "q_x" << ";" <<  "q_y" << ";" <<  "q_z" << ";"
+        //Flgiht controller pose
+	<< "FCU_timestamp(epoch)"<< ";" 
+	<< "FCU_local_pos_(x)" << ";" <<  "y" << ";" <<  "z" << ";"
+	<< "FCU_local_quat(q_w)" << ";" <<  "q_x" << ";" <<  "q_y" << ";" <<  "q_z" << ";" 
+        //Discovered rhombis pose
+	<< "Rhombi_frameID" << ";" << "Rhombi_timestamp(epoch)" << ";"
+	<< "Rhombis_pos(x)" << ";" <<  "y" << ";" <<  "z" << ";" 
+	<< "Rhombis_quat(q_w)" << ";" <<  "q_x" << ";" <<  "q_y" << ";" <<  "q_z" <<std::endl;
 	//Dummy init to avoid writing before all callbacks run
 	has_run1=has_run2=has_run3=false;
 	//MAIN Loop
 	while(kbhit()==0 && ros::ok() && experiment_runs)
-	    {
+    {
 		    //Spin until user stops program
 		    ros::spinOnce();
 		    loop_rate.sleep();
-	    }
+    }
 	ROS_INFO("Saved data to: %s", fileName.c_str());
 	outfile.close();
 	    return 0;

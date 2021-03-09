@@ -1,38 +1,49 @@
 #!/bin/bash
-# My second script
 
-current_source_dir=~/projects/nevangeliou_GapterUAV
+current_date_time="`date +%Y-%m-%d`"
+echo $current_date_time
+
+current_source_dir=$HOME/projects/ne34_UAScodes
 cd $current_source_dir
 source $current_source_dir/devel/setup.bash
 
+rm -rf $current_source_dir/logs/Rhombi_Experiments/images_latest
+mkdir -p $current_source_dir/logs/Rhombi_Experiments/images_latest
+rm $current_source_dir/logs/images_latest
+ln -s $current_source_dir/logs/Rhombi_Experiments/images_latest $current_source_dir/logs/images_latest
+
+mkdir -p $current_source_dir/logs/Rhombi_Experiments/$current_date_time
+rm $current_source_dir/latest
+ln -s $current_source_dir/logs/Rhombi_Experiments/$current_date_time $current_source_dir/logs/latest
+
 sleep 1s
 
-roslaunch spinnaker_sdk_camera_driver acquisition.launch &
+#roslaunch spinnaker_sdk_camera_driver acquisition.launch &
+#echo -n $! >> ~/lastRunProcIds
+#echo -n " " >> ~/lastRunProcIds
+
+#sleep 10s
+
+roslaunch logging_measurements rhombi_logger.launch &
 echo -n $! >> ~/lastRunProcIds
 echo -n " " >> ~/lastRunProcIds
 
-sleep 10s
+#sleep 5s
 
-rosrun logging_measurements rhombi_experiment &
-echo -n $! >> ~/lastRunProcIds_exp
-echo -n " " >> ~/lastRunProcIds_exp
+#rosrun rhombi_markers rhombi_markers &
+#echo -n $! >> ~/lastRunProcIds
+#echo -n " " >> lastRunProcIds
 
-sleep 5s
-
-rosrun rhombi_markers rhombi_markers &
-echo -n $! >> ~/lastRunProcIds_exp
-echo -n " " >> lastRunProcIds_exp
-
-sleep 5s
+#sleep 5s
 
 echo "SEND CHARACTER TO START FYLING"
-read varname
+#read varname
 
-sleep 2s
+#sleep 2s
 
-rosrun flight_pkg simple_takeoff_land &
-echo -n $! >> ~/lastRunProcIds_exp
-echo -n " " >> ~/lastRunProcIds_exp
+#rosrun flight_pkg simple_takeoff_land &
+#echo -n $! >> ~/lastRunProcIds_exp
+#echo -n " " >> ~/lastRunProcIds_exp
 
 read varname
 
@@ -45,6 +56,6 @@ for value in {1..2}
 		rostopic pub /stop_experiment std_msgs/Bool "data: true"
 done
 
-sleep 10s
+#sleep 10s
 
 echo "Done"

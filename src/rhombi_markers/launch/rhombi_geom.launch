@@ -1,0 +1,18 @@
+<launch>
+  <!-- logger params-->
+  <arg name="geometry_savepath"	default="$(env HOME)/projects/ne34_UAScodes/src/rhombi_markers/cfg/" 	doc="Path to save the generated geometry" />
+  <arg name="RectangleSide"			default="0.075" 	doc="Size of rhombicuboctahdron side" />
+  <arg name="MarkerSize"			default="0.0635" 	doc="Size of big ArUco marker side" />
+  <arg name="MarkerSmallSize"		default="0.0295" 	doc="Size of small ArUco marker side" />
+  <arg name="geometry_name"			default="Rhombicuboctahedron_Big" 	doc="Size of small ArUco marker side" />
+
+  <!-- load the logging node -->
+  <node pkg="rhombi_markers" type="rhombi_geom_extractor" name="rhombi_geom_extractor" output="screen" >
+		<!-- Load parameters onto server using argument or default values above -->
+		<param name="geometry_savepath"	value="$(arg geometry_savepath)" />
+		<param name="RectangleSide"	value="$(arg RectangleSide)" />
+		<param name="MarkerSize"	value="$(arg MarkerSize)" />
+		<param name="MarkerSmallSize"	value="$(arg MarkerSmallSize)" />
+		<param name="geometry_name"	value="$(arg geometry_name)" />
+  </node>
+</launch>

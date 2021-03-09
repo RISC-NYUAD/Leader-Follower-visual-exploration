@@ -1,7 +1,6 @@
 //
 #include "NE_utilities.h"
 
-
 //Keyboard function used to terminate the program on any keyboard button hit
 int kbhit(void)
 {

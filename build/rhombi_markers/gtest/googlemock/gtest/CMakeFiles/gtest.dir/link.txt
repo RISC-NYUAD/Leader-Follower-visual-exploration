@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -g  -shared -Wl,-soname,libgtest.so -o libgtest.so CMakeFiles/gtest.dir/src/gtest-all.cc.o  -L/usr/local/lib  -L/home/odroid/projects/nevangeliou_GapterUAV/build/rhombi_markers/gtest/googlemock/gtest/src -Wl,-rpath,/usr/local/lib:/home/odroid/projects/nevangeliou_GapterUAV/build/rhombi_markers/gtest/googlemock/gtest/src -lpthread 

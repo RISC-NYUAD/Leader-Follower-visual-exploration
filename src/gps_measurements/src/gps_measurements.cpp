@@ -92,10 +92,11 @@ void GPSraw_cb(const sensor_msgs::NavSatFix::ConstPtr& NavSatFixRaw_)
 {
 	GPSfix_raw=*NavSatFixRaw_;
 	//Logging
-	outfile << TimeReference.time_ref.sec << ";" << TimeReference.time_ref.sec <<  ";" 
-				<< GPSfix.latitude << ";" << GPSfix.longitude << ";" << GPSfix.altitude << ";"
-					<< GPSfix_raw.latitude << ";" << GPSfix_raw.longitude << ";" << GPSfix_raw.altitude << ";"
-						<< localPose.pose.position.x << ";" << localPose.pose.position.y << ";" << localPose.pose.position.z << std::endl;
+	outfile << GPSfix.header.stamp <<  ";" 
+				<< (uint32_t) (GPSfix.latitude*100000000) << ";" << (uint32_t) (GPSfix.longitude*100000000) << ";" << (uint32_t) (GPSfix.altitude*1000) << ";"
+                << (uint32_t) (GPSfix_raw.latitude*100000000) << ";" << (uint32_t) (GPSfix_raw.longitude*100000000) << ";" << (uint32_t) (GPSfix_raw.altitude*1000) << ";"
+                        << localPose.header.stamp << ";"
+                            << localPose.pose.position.x << ";" << localPose.pose.position.y << ";" << localPose.pose.position.z << std::endl;
 }
 
 //get current GPS position of drone
@@ -148,7 +149,7 @@ int main(int argc, char** argv)
 	//Initialization - Log file
 	std::string usr=get_username();
 	std::string fileName;
-	if(usr!="?") fileName="/home/"+usr+"/projects/gapter_UAV/devel/lib/gps_measurements/"+date_filename(); //try to get username, if not save to home folder
+	if(usr!="?") fileName="/home/"+usr+"/projects/nevangeliou_GapterUAV/logs/"+date_filename(); //try to get username, if not save to home folder
 	else fileName=date_filename();
 	outfile.open(fileName, std::ios::out | std::ios::app);
 	if (outfile.fail()){
@@ -158,13 +159,14 @@ int main(int argc, char** argv)
 
 	//make sure write fails with exception if something is wrong
 	outfile.exceptions(outfile.exceptions() | std::ios::failbit | std::ifstream::badbit);
-	outfile << "time_ref(Sec)"<< ";" << "time_ref(NSec)" << ";" 
+	outfile << "GPS msg time stamp"<< ";"
 				<< "GPSfix.latitude" << ";" << "GPSfix.longitude" << ";" << "GPSfix.altitude" << ";" 
 					<< "GPSfix_raw.latitude" << ";" << "GPSfix_raw.longitude" << ";" << "GPSfix_raw.altitude" << ";"
+                        << "mavros local pose time stamp" << ";"
 						<< "Local Position(x)" << ";" <<  "y" << ";" <<  "z" << std::endl;
 	std::cout<< "Saving data to: " << fileName << std::endl;
 	//MAIN LOOP
-	while (ros::ok() && kbhit()==0)
+	while (ros::ok() && !kbhit())
 	{
 		ros::spinOnce();
 		rate.sleep();

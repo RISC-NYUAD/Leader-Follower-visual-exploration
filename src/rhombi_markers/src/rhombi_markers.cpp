@@ -29,22 +29,27 @@ using namespace cv;
 
 bool experiment_play=false;
 
-#define _DETECTION_MODE aruco::DM_NORMAL 
+#define _DETECTION_MODE aruco::DM_NORMAL
 #define _REFINEMENT_MODE aruco::CORNER_SUBPIX //CORNER_SUBPIX_
 #define _DICTIONARY "ARUCO_MIP_16h3" //"ARUCO_MIP_36h12"
 #define NUM_RHOMBIS 3 //Number of Rhombis in the experiment
 
-#define RATE 20 //Hz
+#define USE_PREV_RVEC_TVEC 0
+#define DO_FCU_REFINEMENT 0 //Transform rvec tvec using IMU new pose, before passing as previous value to SolvePNP
+#define IMAGE_SAVE 1 //Save images to disk
+
+#define RATE 30 //Hz
 
 MarkerDetector Mdetector;
 std::map<uint32_t, MarkerPoseTracker> Mtracker;
 aruco::CameraParameters CamParam;
 
 //ARUCO MARKER SIZE and PARAMS DEFINITION
-const double actualRectSideSize = 0.074;
+const double actualRectSideSize = 0.075;
 double distSideToSolidCenter;
 const double tileSize = 0.0635; //final solid size
-const double SmalltileSize = 0.033*tileSize/0.074;
+const double SmalltileSize = 0.0295;
+//const double SmalltileSize = 0.033*tileSize/actualRectSideSize;
 float markerLength=0.01 ;
 
 int frameIDS = 0;
@@ -64,9 +69,9 @@ vector<vector<aruco::Marker>> RhombiMarkerDetections(NUM_RHOMBIS);
 vector<vector<cv::Mat>> RvecTvec(NUM_RHOMBIS); 
 
 
-const std::string drone_name="Gapter_2";
+const std::string drone_name="Gapter1";
 //This is to avoid erroneous measurements were a drone claims it detected a rhombi geometry which is actually itself
-int drone_self_rhombi = marker_start_ids[2]/17; 
+int drone_self_rhombi = marker_start_ids[1]/17; 
 geometry_msgs::PoseArray pose_publishing;
 
 // Calculates rotation matrix to euler angles
@@ -123,11 +128,13 @@ bool separate_markersNE(vector<aruco::Marker> Markers){
 	bool found=false;
     if(DEBUG) ROS_INFO("Seperate Markers!");
 	for(auto& marker : Markers){
+		if(marker.id>33 && marker.id<51){
 		int index = marker.id/17;
-		//Make sure the index is not bigger than xisting rhombis and I did not discover myself for whatever reason :)
+		//Make sure the index is not bigger than existing rhombis and I did not discover myself for whatever reason :)
 		if(index<NUM_RHOMBIS && index!=drone_self_rhombi){
 			RhombiMarkerDetections[index].push_back(marker);
 			found=true;
+			}
 		}
 	}
 	if(DEBUG) ROS_INFO("Seperate done!");
@@ -135,21 +142,20 @@ bool separate_markersNE(vector<aruco::Marker> Markers){
 }
 
 void solvePNP_NE(cv::Mat srcImg){
-
-	//Copy Image for visualizing
-	cv::Mat imageMarkers;
-	if(PREVIEW) srcImg.copyTo(imageMarkers);
-	// create 8bit color image. IMPORTANT: initialize image otherwise it will result in 32F
-	cv::Mat imageAxes(srcImg.size(), CV_8UC3);
-        if(PREVIEW) cv::cvtColor(srcImg, imageAxes, CV_GRAY2RGB);
-
-	vector<Marker> Markers = Mdetector.detect(srcImg); // find all markers in frame
+    // Copy image to visualize Axis and/or save
+    // create 8bit color image. IMPORTANT: initialize image otherwise it will result in 32F
+    cv::Mat new_image = cv::Mat::zeros(srcImg.size(), srcImg.type());
+    srcImg.convertTo(new_image,-1,2.0,0);
+    srcImg = new_image;
+    cv::Mat imageAxes(srcImg.size(), CV_8UC3);
+    cv::cvtColor(srcImg, imageAxes, CV_GRAY2RGB);
+//     }
+    
+	vector<Marker> Markers = Mdetector.detect(new_image); // find all markers in frame
 	if(Markers.size()>0){
-		if(PREVIEW){
-			for(auto m : Markers) {
-				m.draw(imageMarkers, Scalar(0, 0, 255), 2);
-				imshow("imageMarkers",imageMarkers); 
-				//cv::waitKey(1);
+		if(PREVIEW || IMAGE_SAVE){
+			for(auto m : Markers){
+				m.draw(imageAxes, Scalar(0, 0, 255), 2);
 			}
 		}
 		if(separate_markersNE(Markers)){ // do nothing if No Rhombis were found
@@ -182,14 +188,23 @@ void solvePNP_NE(cv::Mat srcImg){
 							}
 						}
 					}
-					//if previous values exist pass them to solve SolvePNP
+					//SolvePNP
 					cv::Mat error;
 					cv::Mat1d rvec_det,tvec_det;
 					if(RvecTvec[RhombiIndex].size()>0){
 						//Save previous values
 						cv::Mat rvec_prev= rvec_det = RvecTvec[RhombiIndex][0];
 						cv::Mat tvec_prev= tvec_det = RvecTvec[RhombiIndex][1];
-						cv::solvePnP(objectPoints, imagePoints, CamParam.CameraMatrix, CamParam.Distorsion, rvec_det, tvec_det, true, 0); 
+                        if(USE_PREV_RVEC_TVEC){
+                            if(DO_FCU_REFINEMENT){
+                                //TO DO - REFINE THE RVEC TVEC based ON FCU reported motion
+                            }
+                            cv::solvePnP(objectPoints, imagePoints, CamParam.CameraMatrix, CamParam.Distorsion, rvec_det, tvec_det, true, 0); 
+                            
+                        }
+                        else{
+                            cv::solvePnP(objectPoints, imagePoints, CamParam.CameraMatrix, CamParam.Distorsion, rvec_det, tvec_det, false, 3);
+                        }
 						//cv::solvePnPGeneric(objectPoints,imagePoints,CamParam.CameraMatrix, CamParam.Distorsion,rvecs_det,tvecs_det, true, 0, RvecTvec[RhombiIndex][0], RvecTvec[RhombiIndex][1], error); 
 						//Clear anyway...if eroneous value we should compute from scrath
 						RvecTvec[RhombiIndex].empty();
@@ -233,31 +248,32 @@ void solvePNP_NE(cv::Mat srcImg){
 							std::cout << "Rhombi r_vec: " << to_euler_xyz[0]*180/M_PI << " " << to_euler_xyz[1]*180/M_PI << " " << to_euler_xyz[2]*180/M_PI << " " << std::endl;
 							std::cout << "Rhombi t_vec: " << tvec_det << std::endl << std::endl;
 						}
-						if(PREVIEW){
-							cv::Mat to_matrix;
-							cv::Vec3f to_euler_xyz;
-							cv::Rodrigues(rvec_det, to_matrix);
-							to_euler_xyz=rotationMatrixToEulerAngles(to_matrix);
-							vector< Point2f > imagePointsA;	
-							vector< Point3f > axisPoints;
-							axisPoints.push_back(Point3f(0, 0, 0));
-							axisPoints.push_back(Point3f(markerLength * 7.5f, 0, 0));
-							axisPoints.push_back(Point3f(0, markerLength * 7.5f, 0));
-							axisPoints.push_back(Point3f(0, 0, markerLength * 7.5f));			
-							Mat imagePointsVelocities = (Mat_<double>(15,8) << 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,  0,0,0,0,0,0,0,0); 
-							projectPoints(axisPoints, rvec_det, tvec_det, CamParam.CameraMatrix, CamParam.Distorsion, imagePointsA, imagePointsVelocities);
-							// draw axis lines
-							int C_w=CamParam.CamSize.width;
-							int C_h=CamParam.CamSize.height;
-							if(inRange(0,C_w,imagePointsA[0].x) && inRange(0,C_h,imagePointsA[0].y) &&
-								inRange(0,C_w,imagePointsA[1].x) && inRange(0,C_h,imagePointsA[1].y) &&
-									inRange(0,C_w,imagePointsA[2].x) && inRange(0,C_h,imagePointsA[2].y) &&
-										inRange(0,C_w,imagePointsA[3].x) && inRange(0,C_h,imagePointsA[3].y)){
-								line(imageAxes, imagePointsA[0], imagePointsA[1], Scalar(0, 0, 255), 10);
-								line(imageAxes, imagePointsA[0], imagePointsA[2], Scalar(0, 255, 0), 10);
-								line(imageAxes, imagePointsA[0], imagePointsA[3], Scalar(255, 0, 0), 10);
-							}
-						}
+						//Prepare image for saving
+						if(PREVIEW || IMAGE_SAVE){
+                            cv::Mat to_matrix;
+                            cv::Vec3f to_euler_xyz;
+                            cv::Rodrigues(rvec_det, to_matrix);
+                            to_euler_xyz=rotationMatrixToEulerAngles(to_matrix);
+                            vector< Point2f > imagePointsA;	
+                            vector< Point3f > axisPoints;
+                            axisPoints.push_back(Point3f(0, 0, 0));
+                            axisPoints.push_back(Point3f(markerLength * 7.5f, 0, 0));
+                            axisPoints.push_back(Point3f(0, markerLength * 7.5f, 0));
+                            axisPoints.push_back(Point3f(0, 0, markerLength * 7.5f));			
+                            Mat imagePointsVelocities = (Mat_<double>(15,8) << 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,  0,0,0,0,0,0,0,0); 
+                            projectPoints(axisPoints, rvec_det, tvec_det, CamParam.CameraMatrix, CamParam.Distorsion, imagePointsA, imagePointsVelocities);
+                            // draw axis lines
+                            int C_w=CamParam.CamSize.width;
+                            int C_h=CamParam.CamSize.height;
+                            if(inRange(0,C_w,imagePointsA[0].x) && inRange(0,C_h,imagePointsA[0].y) &&
+                                inRange(0,C_w,imagePointsA[1].x) && inRange(0,C_h,imagePointsA[1].y) &&
+                                    inRange(0,C_w,imagePointsA[2].x) && inRange(0,C_h,imagePointsA[2].y) &&
+                                        inRange(0,C_w,imagePointsA[3].x) && inRange(0,C_h,imagePointsA[3].y)){
+                                        line(imageAxes, imagePointsA[0], imagePointsA[1], Scalar(0, 0, 255), 2);
+                                        line(imageAxes, imagePointsA[0], imagePointsA[2], Scalar(0, 255, 0), 2);
+                                        line(imageAxes, imagePointsA[0], imagePointsA[3], Scalar(255, 0, 0), 2);
+                                        }
+                        }
 					}
 					else{
 						if(DEBUG) ROS_INFO("No solution found for Rhombi.");
@@ -265,6 +281,10 @@ void solvePNP_NE(cv::Mat srcImg){
 				}
 			}
 			if(PREVIEW){imshow("RhombiAxes",imageAxes);cv::waitKey(1);}
+			if(IMAGE_SAVE){
+			std:string temp_name = "/home/gapter1/projects/nevangeliou_GapterUAV/logs/Rhombi_Experiments/images_latest/" + std::to_string(frameIDS) + ".jpg";
+            cv::imwrite(temp_name,imageAxes);
+            }
 		}
 		else{
 			if(DEBUG) ROS_INFO("Wrong marker seperation");
@@ -314,7 +334,7 @@ void aruco3_init(){
 		//Rotate First Eigen uses angle-axis rotation system - rotation for lower markers is over Y axis
 		Eigen::AngleAxisd MarkerRotation_vector ( M_PI_4*j, Eigen::Vector3d ( 0, 1 , 0 ) );
 		MarkerRT.rotate(MarkerRotation_vector);
-		//Translate second -- Lower markers are higher in Y (up) axis by actualRectSideSize/2 and in Z (forward) by actualRectSideSize
+		//Translate second -- Lower markers are higher in Y (up) axis by actualRectSideSize/2 and in Z (forward) by distSideToSolidCenter
 		Eigen::Vector3d MarkerTrans(0, actualRectSideSize/2, distSideToSolidCenter);
 		MarkerRT.translate(MarkerTrans);
 
@@ -437,12 +457,12 @@ void aruco3_init(){
 		Eigen::AngleAxisd MarkerRotation_vector ( M_PI_4+M_PI_2*j, Eigen::Vector3d ( 0, 1 , 0 ) );
 		MarkerRT.rotate(MarkerRotation_vector);
 		//Eigen uses angle-axis rotation system - rotation for middle markers is over Y and then new X axis
-		Eigen::AngleAxisd MarkerRotation_vector2 ( -M_PI_4, Eigen::Vector3d ( 1, 0 , 0 ) );
+		 Eigen::AngleAxisd MarkerRotation_vector2 ( -35.26*M_PI/180.0, Eigen::Vector3d ( 1, 0 , 0 ) );
 		MarkerRT.rotate(MarkerRotation_vector2);
 		//Final translate over new Z
-		Eigen::Vector3d MarkerTrans2(0, -SmalltileSize/2, distSideToSolidCenter);
+		Eigen::Vector3d MarkerTrans2(0, -0.003901, 0.095571); //From Solidworks
 		MarkerRT.translate(MarkerTrans2);
-		//Final translate over new point to go exactly to triangle center 
+		//Final translate over new point to go exactly to triangle center
 		
 		//2) Create RT matrix that will get us to CORNERS
 		Eigen::Isometry3d CornersRT_base= Eigen::Isometry3d::Identity(); //it is a 4x4 matrix not 3x3
@@ -525,5 +545,6 @@ int main(int argc, char **argv)
 		ros::spinOnce();
 		loop_rate.sleep();
 	}
+	ROS_INFO("Ending rhombi detection");
 	return 0;
 }

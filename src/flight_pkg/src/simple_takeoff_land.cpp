@@ -24,13 +24,13 @@ using namespace std;
 #define takeoff_alt 2.0
 #define rect_size 1.5
 
-std::string drone_name="Gapter_2";
+std::string drone_name="Gapter1";
 
 #define NUM_POINTS 8
 
-#define AIR_TIME 100 //in seconds
+#define AIR_TIME 30 //in seconds
 
-#define RATE 10 //Hz
+#define RATE 30 //Hz
 
 //Set global variables
 mavros_msgs::State current_state;
@@ -136,8 +136,6 @@ int main(int argc, char** argv)
   ros::Rate rate(RATE);
   ros::ServiceClient set_mode_client = nh.serviceClient<mavros_msgs::SetMode>("/mavros/set_mode");
   ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>("/mavros/state", 1, state_cb);
-  //ros::Publisher stop_execution_pub = nh.advertise<std_msgs::Bool>("/stop_execution", 1);
- // ros::Publisher set_vel_pub = nh.advertise<mavros_msgs::PositionTarget>("/mavros/setpoint_raw/local", 1);
   ros::Publisher local_pos_pub = nh.advertise<geometry_msgs::PoseStamped>("/mavros/setpoint_position/local", 1);
   ros::Subscriber currentPos = nh.subscribe<geometry_msgs::PoseStamped>("/mavros/local_position/pose", 1, pose_cb);
   ros::Publisher start_stop_execution = nh.advertise<std_msgs::Bool>("/rhombi_det_execution", 1);
