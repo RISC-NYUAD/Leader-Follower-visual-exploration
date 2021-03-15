@@ -2,7 +2,7 @@
   <!-- logger params-->
   <arg name="logging_rate"	default="30"	doc="Ros_rate in Hz"/>
   <arg name="object_name"	default="gapter1"	doc="Object name to capture in relevant topics for logging" />
-  <arg name="logging_path"	default="$(env HOME)/projects/ne34_UAScodes/logs/latest/" 	doc="Path to log the measurements" />
+  <arg name="logging_path"	default="$(env HOME)/projects/NE_UAScodes/logs/Rhombi_Experiments/latest/" 	doc="Path to log the measurements" />
 
   <!-- load the logging node -->
   <node pkg="logging_measurements" type="rhombi_logger" name="rhombi_logger_$(arg object_name)" output="screen" >

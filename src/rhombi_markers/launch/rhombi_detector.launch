@@ -6,13 +6,13 @@
 <arg name="do_debug"				default="false" 	doc="Print debug messages on output" />
   <arg name="do_preview"			default="true" 	doc="Show resulting image on screen" />
   <arg name="save_images"			default="true" 		doc="Save resulting image to folder" />
-  <arg name="image_savepath"		default="$(env HOME)/projects/ne34_UAScodes/logs/Rhombi_Experiments/images_latest/"		doc="Path to save the images to"/>
+  <arg name="image_savepath"		default="$(env HOME)/projects/NE_UAScodes/logs/Rhombi_Experiments/images_latest/"		doc="Path to save the images to"/>
   
   <arg name="num_rhombis"			default="3" 		doc="Maximum Number of Rhombis to be detected in the image" />  
   <arg name="self_rhombi"			default="1" 		doc="# of Rhombi fixed on the drone. Rhombi 0 has ids from 0 to 16. Rhombi 1 has ids from 16 to 33 etc. " />
 	<arg name="min_detections"		default="2" 		doc="min # of marker detections per Rhombi to proceed with solvePnP. If this>1 single solution exist" />
   
-  <arg name="rhombi_gmtry_path"		default="$(env HOME)/projects/ne34_UAScodes/src/rhombi_markers/cfg/Rhombicuboctahedron_Big" 	doc="Path for geometry to use" />>
+  <arg name="rhombi_gmtry_path"		default="$(find rhombi_markers)/cfg/Rhombicuboctahedron_Big" 	doc="Path for geometry to use" />>
   <arg name="use_prev_rvec_tvec"	default="false"		doc="Use previous rvec tvec as initial guess for solvePnP" />
   <arg name="do_fcu_refinement"		default="false" 	doc="Refine previous rvec tvec with new FCU pose" />
 
