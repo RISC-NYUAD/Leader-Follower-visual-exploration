@@ -29,7 +29,7 @@
 
   <!-- Capture nodelet params-->
   <arg name="tf_prefix" default="" doc="will prefix (arg tf_prefix)/ to existing frame_id in Image msg and camerainfo msg" />
-  <arg name="config_file"       default="$(find spinnaker_sdk_camera_driver)/params/test_params.yaml" doc="File specifying the parameters of the camera_array"/>
+  <arg name="config_file"       default="$(find spinnaker_sdk_camera_driver)/params/gapter1.yaml" doc="File specifying the parameters of the camera_array"/>
 
    <!-- start the nodelet manager if $(arg start_nodelet_manager) is true-->
   <node pkg="nodelet" type="nodelet" name="$(arg manager)" args="manager" output="screen" unless="$(arg external_manager)" />

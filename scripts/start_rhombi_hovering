@@ -7,36 +7,37 @@ current_source_dir=$HOME/projects/ne34_UAScodes
 cd $current_source_dir
 source $current_source_dir/devel/setup.bash
 
+mkdir -p $current_source_dir/logs
+mkdir -p $current_source_dir/logs/Rhombi_Experiments
+
 rm -rf $current_source_dir/logs/Rhombi_Experiments/images_latest
 mkdir -p $current_source_dir/logs/Rhombi_Experiments/images_latest
-rm $current_source_dir/logs/images_latest
-ln -s $current_source_dir/logs/Rhombi_Experiments/images_latest $current_source_dir/logs/images_latest
 
 mkdir -p $current_source_dir/logs/Rhombi_Experiments/$current_date_time
-rm $current_source_dir/latest
-ln -s $current_source_dir/logs/Rhombi_Experiments/$current_date_time $current_source_dir/logs/latest
+rm $current_source_dir/logs/Rhombi_Experiments/latest
+ln -s $current_source_dir/logs/Rhombi_Experiments/$current_date_time $current_source_dir/logs/Rhombi_Experiments/latest
 
 sleep 1s
 
-#roslaunch spinnaker_sdk_camera_driver acquisition.launch &
-#echo -n $! >> ~/lastRunProcIds
-#echo -n " " >> ~/lastRunProcIds
+roslaunch spinnaker_sdk_camera_driver acquisition.launch &
+echo -n $! >> ~/lastRunProcIds
+echo -n " " >> ~/lastRunProcIds
 
-#sleep 10s
+sleep 10s
 
 roslaunch logging_measurements rhombi_logger.launch &
 echo -n $! >> ~/lastRunProcIds
 echo -n " " >> ~/lastRunProcIds
 
-#sleep 5s
+sleep 5s
 
-#rosrun rhombi_markers rhombi_markers &
-#echo -n $! >> ~/lastRunProcIds
-#echo -n " " >> lastRunProcIds
+roslaunch rhombi_markers rhombi_detector.launch &
+echo -n $! >> ~/lastRunProcIds
+echo -n " " >> lastRunProcIds
 
-#sleep 5s
+sleep 5s
 
-echo "SEND CHARACTER TO START FYLING"
+#echo "SEND CHARACTER TO START FYLING"
 #read varname
 
 #sleep 2s
@@ -53,7 +54,8 @@ for value in {1..2}
 	do 
 		echo "Stop attempt No." 
 		echo $value
-		rostopic pub /stop_experiment std_msgs/Bool "data: true"
+		rostopic pub -1 /experiment_execution std_msgs/Bool "data: false"
+		rostopic pub -1 /experiment_logging std_msgs/Bool "data: false"
 done
 
 #sleep 10s

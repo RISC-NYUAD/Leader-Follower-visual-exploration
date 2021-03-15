@@ -11,13 +11,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 # SET(OpenCV_DIR "~/github_packages/opencv/build")
 
 set(PROJECT_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include/" CACHE PATH "Project Include Directory")
-set(SPINNAKER_INCLUDE_DIR_ "/opt/spinnaker/include/" CACHE PATH "Spinnaker Include Directory")
-set(SPINNAKER_LIB_DIR_ "/opt/spinnaker/lib/" CACHE PATH "Spinnaker Libs Directory")
-# set(yaml-cpp_DIR "~/apps/yaml-cpp" CACHE PATH "yaml-cpp Directory")
 set(CUDA_USE_STATIC_CUDA_RUNTIME  OFF)
-
-message(STATUS ${PROJECT_INCLUDE_DIR})
-message(!!!!!!!!!!!!!)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp

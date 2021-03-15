@@ -118,7 +118,7 @@ int main(int argc, char** argv)
 	ros::Subscriber ViconPos_sub = nh.subscribe<geometry_msgs::PoseStamped>("/vrpn_client_node/"+ object_name + "/pose", 1, &vrpnPoseFeedback);
 	ros::Subscriber currentPos_sub = nh.subscribe<geometry_msgs::PoseStamped>("/mavros/local_position/pose", 1, &FCUPose_cb);
 	ros::Subscriber rhombiPos_sub = nh.subscribe<geometry_msgs::PoseArray>("/"+object_name+"/pose_stamped", 1, &RhombiPose_cb);
-	ros::Subscriber tracking_Start_sub =nh.subscribe<std_msgs::Bool> ("/experiment_execution",1, &experimentHandleFeedback);
+	ros::Subscriber tracking_Start_sub =nh.subscribe<std_msgs::Bool> ("/experiment_logging",1, &experimentHandleFeedback);
 	
 	//Wait for all callbacks to run -- Hard constraint
 	while(ViconPos_sub.getNumPublishers()==0 || currentPos_sub.getNumPublishers()==0 || rhombiPos_sub.getNumPublishers()==0){

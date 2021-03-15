@@ -283,7 +283,7 @@ int main(int argc, char **argv)
 	Mdetector.setParameters(_param);
 	
 	//Wait for drone to get to flight height
-	ros::Subscriber tracking_start = nh.subscribe<std_msgs::Bool> ("/rhombi_det_execution", 1, &experimentHandleFeedback);
+	ros::Subscriber tracking_start = nh.subscribe<std_msgs::Bool> ("/experiment_execution", 1, &experimentHandleFeedback);
 	experiment_play = true;
 	while(!experiment_play){
 		ros::spinOnce();
