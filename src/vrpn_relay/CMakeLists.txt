@@ -24,3 +24,6 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 
 add_executable(vrpn_relay src/vrpn_relay.cpp src/NE_utilities.cpp)
 target_link_libraries(vrpn_relay   ${catkin_LIBRARIES})
+
+add_executable(vrpn_relay_v2 src/vrpn_relay_v2.cpp src/NE_utilities.cpp)
+target_link_libraries(vrpn_relay_v2   ${catkin_LIBRARIES})

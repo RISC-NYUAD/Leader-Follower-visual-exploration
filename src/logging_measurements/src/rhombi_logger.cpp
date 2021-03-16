@@ -38,25 +38,23 @@
 #include <std_msgs/Bool.h>
 #include "NE_utilities.h"
 
-std::string object_name = "~";
 std::ofstream outfile;
-
-int frameID = -1;
 
 geometry_msgs::PoseStamped  FCUPose;
 geometry_msgs::PoseArray RhombiPoses;
 bool experiment_runs=true;
 
+int frameID;
+
 void vrpnPoseFeedback(geometry_msgs::PoseStampedConstPtr vrpnPose_){
-	if(frameID!=RhombiPoses.header.seq){
+	if(frameID!=RhombiPoses.header.seq && FCUPose.header.seq != 0){
 		frameID = RhombiPoses.header.seq;
 		//VRPN pose
 		outfile << vrpnPose_-> header.stamp << ";"
 		<< vrpnPose_->pose.position.x << ";" << vrpnPose_->pose.position.y << ";" << vrpnPose_->pose.position.z << ";" 
 		<< vrpnPose_->pose.orientation.w << ";" << vrpnPose_->pose.orientation.x<<";"<< vrpnPose_->pose.orientation.y<< ";"<<vrpnPose_->pose.orientation.z << ";" 
 		//Flgiht controller pose
-		<< FCUPose.header.stamp << ";"
-		<< FCUPose.pose.position.x << ";" << FCUPose.pose.position.y << ";" << FCUPose.pose.position.z << ";"
+		<< FCUPose.header.stamp << ";"	<< FCUPose.pose.position.x << ";" << FCUPose.pose.position.y << ";" << FCUPose.pose.position.z << ";"
 		<< FCUPose.pose.orientation.w << ";" << FCUPose.pose.orientation.x << ";" << FCUPose.pose.orientation.y << ";" << FCUPose.pose.orientation.z << ";"
 		//Discovered rhombis pose
 		<<RhombiPoses.header.seq << ";" << RhombiPoses.header.stamp << ";" ;
@@ -82,14 +80,13 @@ int main(int argc, char** argv)
 {
 	ros::init(argc, argv, "rhombi_logger");
 	ros::NodeHandle nh("~");
-	
 	//Initialization - Rate
 	int RATE = 100;
 	nh.getParam("logging_rate", RATE);
 	ros::Rate loop_rate(RATE);
 	
 	//Initialization - Object name
-	std::string onject_name = "~";
+	std::string object_name = "~";
 	nh.getParam("object_name", object_name);
 	
 	//Initialization - Log file
@@ -125,6 +122,7 @@ int main(int argc, char** argv)
 		ros::spinOnce();
 		loop_rate.sleep();
 	}
+	frameID = RhombiPoses.header.seq;
 	ROS_INFO("Subscribers connected. Saving data to: %s", fileName.c_str());
 	
 	//MAIN Loop

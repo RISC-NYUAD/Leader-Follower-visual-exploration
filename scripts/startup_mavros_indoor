@@ -4,7 +4,7 @@ rm ~/lastRunProcIds
 
 sleep 1s
 
-current_source_dir=~/projects/nevangeliou_GapterUAV
+current_source_dir=~/projects/NE_UAScodes
 cd $current_source_dir
 source $current_source_dir/devel/setup.bash
 
@@ -34,7 +34,7 @@ echo -n " " >> ~/lastRunProcIds
 
 sleep 5s
 
-rosrun vrpn_relay vrpn_relay &
+roslaunch vrpn_relay vrpn_relay.launch &
 echo -n $! >> ~/lastRunProcIds
 echo -n " " >> ~/lastRunProcIds
 

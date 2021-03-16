@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm ~/lastRunProcIds2
+
 current_date_time="`date +%Y-%m-%d`"
 echo $current_date_time
 
@@ -20,34 +22,33 @@ ln -s $current_source_dir/logs/Rhombi_Experiments/$current_date_time $current_so
 sleep 1s
 
 roslaunch spinnaker_sdk_camera_driver acquisition.launch &
-echo -n $! >> ~/lastRunProcIds
-echo -n " " >> ~/lastRunProcIds
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> ~/lastRunProcIds2
 
 sleep 10s
 
 roslaunch logging_measurements rhombi_logger.launch &
-echo -n $! >> ~/lastRunProcIds
-echo -n " " >> ~/lastRunProcIds
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> ~/lastRunProcIds2
 
 sleep 5s
 
 roslaunch rhombi_markers rhombi_detector.launch &
-echo -n $! >> ~/lastRunProcIds
-echo -n " " >> lastRunProcIds
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> lastRunProcIds2
 
 sleep 5s
 
-#echo "SEND CHARACTER TO START FYLING"
-#read varname
-
-#sleep 2s
-
-#rosrun flight_pkg simple_takeoff_land &
-#echo -n $! >> ~/lastRunProcIds_exp
-#echo -n " " >> ~/lastRunProcIds_exp
-
+echo "SEND CHARACTER TO START FYLING"
 read varname
 
+sleep 2s
+
+rosrun flight_pkg simple_takeoff_land &
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> ~/lastRunProcIds2
+
+read varname
 echo "Exit character received"
 
 for value in {1..2}
@@ -58,6 +59,7 @@ for value in {1..2}
 		rostopic pub -1 /experiment_logging std_msgs/Bool "data: false"
 done
 
-#sleep 10s
+kill $(cat ~/lastRunProcIds2)
+sleep 1s
 
 echo "Done"
