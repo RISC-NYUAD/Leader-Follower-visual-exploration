@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
     roscpp
     tf
     diagnostic_updater
+    image_transport
 )
 
 find_package(Boost REQUIRED COMPONENTS thread)
@@ -18,6 +19,7 @@ catkin_package(CATKIN_DEPENDS
     geometry_msgs
     message_runtime 
     roscpp 
+    image_transport
 )
 
 include_directories(include ${catkin_INCLUDE_DIRS})
@@ -30,6 +32,15 @@ target_link_libraries(vrpn_log_all   ${catkin_LIBRARIES})
 
 add_executable(rhombi_experiment src/rhombi_experiment.cpp src/NE_utilities.cpp)
 target_link_libraries(rhombi_experiment   ${catkin_LIBRARIES})
+
+add_executable(NYUNY_logger src/NYUNY_logger.cpp src/NE_utilities.cpp)
+target_link_libraries(NYUNY_logger   ${catkin_LIBRARIES})
+
+add_executable(NYUNY_logger_Daitao src/NYUNY_logger_Daitao.cpp src/NE_utilities.cpp)
+target_link_libraries(NYUNY_logger_Daitao   ${catkin_LIBRARIES})
+
+add_executable(NYUNY_CameraCorrection src/NYUNY_CameraCorrection.cpp src/NE_utilities.cpp)
+target_link_libraries(NYUNY_CameraCorrection   ${catkin_LIBRARIES})
 
 add_executable(rhombi_logger src/rhombi_logger.cpp src/NE_utilities.cpp)
 target_link_libraries(rhombi_logger ${catkin_LIBRARIES})

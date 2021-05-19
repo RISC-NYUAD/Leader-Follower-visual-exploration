@@ -1,0 +1,4 @@
+home/ne34/github_packages/aruco-3.1.12/build/utils_markermap/aruco_create_markermap 3:2 /home/ne34/github_packages/aruco-3.1.12/build/utils_markermap/MarkerMap2.png /home/ne34/github_packages/aruco-3.1.12/build/utils_markermap/MarkerMap2.yml -s 650 -t 0 -i 0.10 -ids 1:2:3:4:5:6
+
+
+/aruco_markermap_pix2meters MarkerMap2.yml 0.1404 MarkerMapMeters2.yml

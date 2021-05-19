@@ -56,4 +56,9 @@ struct rhombi_detect{
 	cv::Mat1d	tvec;	//tvecs
 };
 
+//cv::Mat cameraIntrincics(3,3,CV_64FC1);
+//cv::Mat distortionCoeffs(1,5,CV_64FC1);
+
+int image_width, image_height;
+
 geometry_msgs::PoseArray pose_publishing; //Message for pose_publishing of the detected Rhombis

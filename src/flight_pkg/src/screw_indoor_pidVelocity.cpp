@@ -301,7 +301,7 @@ int main(int argc, char** argv)
         ros::spinOnce();
         ros::Duration(0.01).sleep();
     }
-    initial_pose = current_pose ;
+    initial_pose = current_pose;
     
     //Initialize exp values 
     init_time = ros::Time::now();

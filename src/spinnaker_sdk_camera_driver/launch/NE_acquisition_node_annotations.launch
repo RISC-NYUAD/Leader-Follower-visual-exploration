@@ -1,0 +1,33 @@
+<launch>
+  <!-- logger params-->
+  <arg name="FLIR_acquisition_rate"	default="100"		doc="Ros_rate in Hz"/>
+  <arg name="object_name"			default="gapter1"	doc="Object name to capture in relevant topics for logging" />
+  
+  <arg name="do_debug"				default="true" 	doc="Print debug messages on output" />
+  <arg name="do_preview"			default="true" 	doc="Show resulting image on screen" />
+  <arg name="save_images"			default="false" 		doc="Save resulting image to folder" />
+  <arg name="image_savepath"		default="$(env HOME)/projects/NE_UAScodes/logs/NYUNY_experiments/images_latest/"		doc="Path to save the images to"/>
+
+  <arg name="image_encoding"		default="bgr8" 	doc="Image encoding mono8 bgr8 bgra8 rgb8 rgba8 mono16 etc." />
+  <arg name="image_to_ros"			default="true"		doc="Publish image to_ros"/>
+  
+  <arg name="config_file"       default="$(find spinnaker_sdk_camera_driver)/params/gapter1_matlab.yaml" doc="File specifying the parameters of the camera_array"/>
+  
+  <!-- load the logging node -->
+  <node pkg="spinnaker_sdk_camera_driver" type="NE_acquisition_node_annotations" name="NE_acqusition_node__annotations_$(arg object_name)" output="screen" >
+  
+		<!-- load the acquisition node parameters file.  Note any parameters provided in this file will 
+		override what is in the yaml file.  Thus use it to set parameters camer_array configuration params -->
+		<rosparam command="load"        file="$(arg config_file)" />
+    
+		<!-- Load parameters onto server using argument or default values above -->
+		<param name="FLIR_acquisition_rate"			value="$(arg FLIR_acquisition_rate)" />
+		<param name="object_name"			value="$(arg object_name)" />
+		<param name="do_debug"				value="$(arg do_debug)" />
+		<param name="do_preview"			value="$(arg do_preview)" />
+		<param name="save_images"			value="$(arg save_images)" />
+		<param name="image_savepath"			value="$(arg image_savepath)" />
+		<param name="image_encoding"		value="$(arg image_encoding)" />
+		<param name="image_to_ros"			value="$(arg image_to_ros)" />
+  </node>
+</launch>

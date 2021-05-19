@@ -462,10 +462,10 @@ void acquisition::Capture::read_parameters() {
         }
     } else ROS_WARN("  'delay' Parameter not set, using default behavior: delay=%f",init_delay_);
 
-    if (nh_pvt_.getParam("fps", master_fps_)){
+	if (nh_pvt_.getParam("fps", master_fps_)){
         if (master_fps_>=0) ROS_INFO("  Master cam fps set to : %0.2f",master_fps_);
         else {
-            master_fps_=20;
+            master_fps_=10;
             ROS_WARN("  Provided 'fps' is not valid, using default behavior, fps=%0.2f",master_fps_);
         }
     }

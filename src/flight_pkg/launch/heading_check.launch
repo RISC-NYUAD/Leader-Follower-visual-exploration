@@ -1,0 +1,14 @@
+<launch>
+	<!-- logger params-->
+	<arg name="logging_rate"	default="25"	doc="Ros_rate in Hz"/>
+	<arg name="object_name"	default="gapter1"	doc="Object name to capture in relevant topics" />
+	<arg name="target_path"	default="$(env HOME)/projects/NE_UAScodes/src/flight_pkg/cfg/heading_check_path.txt" 	doc="Path to follow" />
+	
+	<!-- load the logging node -->
+	<node pkg="flight_pkg" type="heading_check_indoor" name="heading_check_indoor_$(arg object_name)" output="screen" >
+		<!-- Load parameters onto server using argument or default values above -->
+		<param name="logging_rate"	value="$(arg logging_rate)" />
+		<param name="object_name"	value="$(arg object_name)" />
+		<param name="target_path"	value="$(arg target_path)" />
+	</node>
+</launch>

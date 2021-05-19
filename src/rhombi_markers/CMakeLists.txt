@@ -6,18 +6,10 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-SET(OpenCV_DIR ~/github_packages/opencv/build)
-SET(aruco_DIR ~/github_packages/aruco-3.1.12/build)
-
-find_package(aruco REQUIRED )
-MESSAGE(STATUS "aruco found, version: ${aruco_VERSION} in dir ${aruco_INCLUDE_DIRS}")
-
-find_package(OpenCV 3 REQUIRED )
-#find_package(OpenCV 3.4 REQUIRED PATHS "~/github_packages/opencv/build")
-MESSAGE(STATUS "OpenCV found, version: ${OpenCV_VERSION} in dir ${OpenCV_INCLUDE_DIRS}")
 
 find_package( Eigen3 REQUIRED )
 MESSAGE(STATUS "Eigen3 found, version: ${EIGEN3_VERSION} in dir ${EIGEN3_INCLUDE_DIR}")
+
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -57,8 +49,18 @@ catkin_package(
     eigen_conversions
     tf
 )
+
+#SET(OpenCV_DIR ~/github_packages/opencv_3_4_4/opencv/build/)
+find_package(OpenCV 3.2 REQUIRED)
+#find_package(OpenCV 3.4 REQUIRED PATHS "~/github_packages/opencv/build")
+#MESSAGE(STATUS "OpenCV found!!!!!!!!!!!!!!!!!!!!!!!!, version: ${OpenCV_VERSION} in dir ${OpenCV_INCLUDE_DIRS}")
+
+SET(aruco_DIR ~/github_packages/aruco-3.1.12/build)
+find_package(aruco REQUIRED )
+MESSAGE(STATUS "aruco !!!!!!!!!!!!!!!!! found, version: ${aruco_VERSION} in dir ${aruco_INCLUDE_DIRS}")
+
 #MESSAGE("1")
-#MESSAGE(STATUS ${OpenCV_LIBS} )
+#MESSAGE(STATUS ${OpenCV_LIB_DIRS} )
 #MESSAGE("2")
 
 #add_executable(aruco_simple src/aruco_simple.cpp)
@@ -78,6 +80,9 @@ target_link_libraries(rhombi_markers_v2 ${aruco_LIBS} ${OpenCV_LIBS} ${catkin_LI
 
 add_executable(rhombi_detect src/rhombi_detect.cpp)
 target_link_libraries(rhombi_detect ${aruco_LIBS} ${OpenCV_LIBS} ${catkin_LIBRARIES})
+
+add_executable(NYUNY_experiment src/NYUNY_experiment.cpp)
+target_link_libraries(NYUNY_experiment ${aruco_LIBS} ${OpenCV_LIBS} ${catkin_LIBRARIES})
 
 add_executable(rhombi_geom_extractor src/rhombi_geom_extractor.cpp)
 target_link_libraries(rhombi_geom_extractor ${aruco_LIBS} ${OpenCV_LIBS} ${catkin_LIBRARIES} -lstdc++fs)

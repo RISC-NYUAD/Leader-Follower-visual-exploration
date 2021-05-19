@@ -40,16 +40,14 @@ ImagePtr acquisition::Camera::grab_frame() {
     ImagePtr pResultImage;
     try{
         pResultImage = pCam_->GetNextImage(GET_NEXT_IMAGE_TIMEOUT_);
+		//pResultImage = pCam_->GetNextImage(1000);
         // Check if the Image is complete
 
         if (pResultImage->IsIncomplete() || pResultImage->GetImageStatus() != IMAGE_NO_ERROR) {
-
             ROS_WARN_STREAM("Image incomplete with image status " << pResultImage->GetImageStatus() << "!");
 
         } else {
-
             timestamp_ = pResultImage->GetTimeStamp();
-
             if (frameID_ >= 0) {
                 lastFrameID_ = frameID_;
                 frameID_ = pResultImage->GetFrameID();
@@ -62,15 +60,12 @@ ImagePtr acquisition::Camera::grab_frame() {
             }
 
         }
-
         ROS_DEBUG_STREAM("Grabbed frame from camera " << get_id() << " with timestamp " << timestamp_*1000);
-        return pResultImage;
     }
     catch(Spinnaker::Exception &e){
        //ROS_FATAL_STREAM(e.what()<<"\n Likely reason is that slaves are not triggered. Check GPIO cables\n");
-                ROS_WARN_STREAM(" GET_NEXT_IMAGE_TIMEOUT_ timed out \n");
+	   ROS_WARN_STREAM(" GET_NEXT_IMAGE_TIMEOUT_ timed out \n");
     }
-
     return pResultImage;
 }
 
@@ -90,10 +85,9 @@ int acquisition::Camera::get_frame_id() {
 }
 
 Mat acquisition::Camera::grab_mat_frame() {
-
     try{
         ImagePtr pResultImage = grab_frame();
-        return convert_to_mat(pResultImage);
+		return convert_to_mat(pResultImage);
     }
     catch(Spinnaker::Exception &e){
         ros::shutdown();
@@ -120,7 +114,7 @@ Mat acquisition::Camera::convert_to_mat(ImagePtr pImage) {
     else
         img = Mat(colsize + YPadding, rowsize + XPadding, CV_8UC1, convertedImage->GetData(), convertedImage->GetStride());
     return img.clone();
-    // return img;
+    //return img;
     
 }
 

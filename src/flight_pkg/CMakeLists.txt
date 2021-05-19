@@ -186,6 +186,18 @@ target_link_libraries(setHeading ${catkin_LIBRARIES})
 add_executable(simple_takeoff_land src/simple_takeoff_land.cpp src/NE_utilities.cpp)
 target_link_libraries(simple_takeoff_land ${catkin_LIBRARIES})
 
+add_executable(heading_check_indoor src/heading_check_indoor.cpp src/NE_utilities.cpp)
+target_link_libraries(heading_check_indoor ${catkin_LIBRARIES})
+
+add_executable(NYUNY_traj src/NYUNY_traj.cpp src/NE_utilities.cpp)
+target_link_libraries(NYUNY_traj ${catkin_LIBRARIES})
+
+add_executable(NYUNY_traj_targetlock src/NYUNY_traj_targetlock.cpp src/NE_utilities.cpp)
+target_link_libraries(NYUNY_traj_targetlock ${catkin_LIBRARIES})
+
+add_executable(NYUNY_traj_targetlock_Daitao src/NYUNY_traj_targetlock_Daitao.cpp src/NE_utilities.cpp)
+target_link_libraries(NYUNY_traj_targetlock_Daitao ${catkin_LIBRARIES})
+
 add_executable(simple_takeoff_land_outdoor src/simple_takeoff_land_outdoor.cpp src/NE_utilities.cpp)
 target_link_libraries(simple_takeoff_land_outdoor ${catkin_LIBRARIES})
 
@@ -197,6 +209,9 @@ target_link_libraries(staple_rectangle_outdoor5 ${catkin_LIBRARIES})
 
 add_executable(staple_rectangle_outdoor6 src/staple_rectangle_outdoor_v6.cpp src/NE_utilities.cpp)
 target_link_libraries(staple_rectangle_outdoor6 ${catkin_LIBRARIES})
+
+add_executable(leader_follower_v1 src/leader_follower_v1.cpp src/NE_utilities.cpp)
+target_link_libraries(leader_follower_v1 ${catkin_LIBRARIES})
 
 
 ## Rename C++ executable without prefix

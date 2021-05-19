@@ -1,0 +1,14 @@
+<launch>
+  <!-- logger params-->
+  <arg name="logger_logging_rate"	default="100"	doc="Ros_rate in Hz"/>
+  <arg name="object_name"	default="gapter1"	doc="Object name to capture in relevant topics for logging" />
+  <arg name="logging_path"	default="$(env HOME)/projects/NE_UAScodes/logs/NYUNY_experiments/latest/" 	doc="Path to log the measurements" />
+
+  <!-- load the logging node -->
+  <node pkg="logging_measurements" type="NYUNY_CameraCorrection" name="NYUNY_CameraCorrection_$(arg object_name)" output="screen" >
+		<!-- Load parameters onto server using argument or default values above -->
+		<param name="logger_logging_rate"	value="$(arg logger_logging_rate)" />
+		<param name="object_name"	value="$(arg object_name)" />
+		<param name="logging_path"	value="$(arg logging_path)" />
+  </node>
+</launch>

@@ -1,0 +1,1 @@
+CCD_timestamp(epoch);CCD_pos(x);y; z;CCD_quat(q_w);q_x;q_y;q_z;Monitor_timestamp(epoch);Monitor_pos_(x);y;z;Monitor_quat(q_w);q_x;q_y;q_z;Image_frameID;Image_framestamp(epoch)

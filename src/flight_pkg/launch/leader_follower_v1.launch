@@ -1,0 +1,14 @@
+<launch>
+	<!-- logger params-->
+	<arg name="trajectory_rate"	default="10"	doc="Ros_rate in Hz"/>
+	<arg name="object_name"	default="gapter1"	doc="Object name to capture in relevant topics" />
+	
+	
+	<!-- load the logging node -->
+	<node pkg="flight_pkg" type="leader_follower_v1" name="leader_follower_v1_$(arg object_name)" output="screen" >
+		<!-- Load parameters onto server using argument or default values above -->
+		<param name="trajectory_rate"	value="$(arg trajectory_rate)" />
+		<param name="object_name"	value="$(arg object_name)" />
+		<param name="follower_distance"	type="double"	value="2.5"	doc="Distance from leader in meters"/>
+	</node>
+</launch>

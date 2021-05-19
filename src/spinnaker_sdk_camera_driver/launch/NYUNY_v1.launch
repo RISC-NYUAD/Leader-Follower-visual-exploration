@@ -1,0 +1,44 @@
+<launch>
+  <!-- logger params-->
+  <arg name="camera_logging_rate"	default="50"		doc="Ros_rate in Hz"/>
+  <arg name="object_name"			default="gapter1"	doc="Object name to capture in relevant topics for logging" />
+  
+  <arg name="do_debug"				default="false" 	doc="Print debug messages on output" />
+  <arg name="do_preview"			default="true" 	doc="Show resulting image on screen" />
+  <arg name="save_images"			default="true" 		doc="Save resulting image to folder" />
+  <arg name="image_savepath"		default="$(env HOME)/projects/NE_UAScodes/logs/NYUNY_experiments/images_latest/"		doc="Path to save the images to"/>
+  
+  <arg name="image_encoding"		default="bgr8" 		doc="Image encoding mono8 bgr8 bgra8 rgb8 rgba8 mono16 etc." />
+  <arg name="contrast"				default="1.0" 		doc="Image contrast refinement" />
+  <arg name="brightness"			default="0.0" 		doc="Image brightness refinement" />
+  
+  <arg name="DETECTION_MODE"		default="0" 		doc="ArUco detection mode: DM_NORMAL=0,DM_FAST=1,DM_VIDEO_FAST=2" />
+  <arg name="REFINEMENT_MODE"		default="0" 		doc="ArUco Corner Refinement: CORNER_SUBPIX=0,CORNER_LINES=1,CORNER_NONE=2" />
+  <arg name="DICTIONARY"			default="1" 		doc="ArUco dict to use: ARUCO_MIP_36h12=1, ARUCO=2, ARUCO_MIP_25h7=3, ARUCO_MIP_16h3=4 etc." />
+  
+  <arg name="cam_param_path"		default="$(env HOME)/projects/NE_UAScodes/src/rhombi_markers/cfg/gapter1_Matlab_v2.yml"	 doc="Path to camera parameters file"/>
+  <arg name="mmap_path"				default="$(env HOME)/projects/NE_UAScodes/src/rhombi_markers/cfg/MarkerMapBig800_meters.yml"	doc="Path to marker map file"/>
+  
+  <arg name="image_to_ros"			default="false"		doc="Publish image to_ros"/>
+  
+  <!-- load the logging node -->
+  <node pkg="spinnaker_sdk_camera_driver" type="NYUNY_v1" name="NE_acqusition_$(arg object_name)" output="screen" >
+		<!-- Load parameters onto server using argument or default values above -->
+		<param name="camera_logging_rate"	value="$(arg camera_logging_rate)" />
+		<param name="object_name"			value="$(arg object_name)" />
+		<param name="do_debug"				value="$(arg do_debug)" />
+		<param name="do_preview"			value="$(arg do_preview)" />
+		<param name="save_images"			value="$(arg save_images)" />
+		<param name="image_savepath"		value="$(arg image_savepath)" />
+		<param name="image_encoding"		value="$(arg image_encoding)" />
+		<param name="contrast"				value="$(arg contrast)" />
+		<param name="brightness"			value="$(arg brightness)" />
+		<param name="DETECTION_MODE"		value="$(arg DETECTION_MODE)" />
+		<param name="REFINEMENT_MODE"		value="$(arg REFINEMENT_MODE)" />
+		<param name="DICTIONARY"			value="$(arg DICTIONARY)" />
+		<param name="cam_param_path"		value="$(arg cam_param_path)" />
+		<param name="mmap_path"				value="$(arg mmap_path)" />
+		<param name="image_to_ros"			value="$(arg image_to_ros)" />
+		
+  </node>
+</launch>

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "Enter the sudo password, please"
+read PW
+
+echo "NTP syncing"
+echo $PW | sudo -S systemctl disable --now systemd-timesyncd
+sleep 1s
+echo $PW | sudo -S systemctl disable --now ntp
+sleep 1s
+echo $PW | sudo -S timedatectl set-local-rtc 1 --adjust-system-clock
+sleep 1s
+timedatectl set-local-rtc 1 --adjust-system-clock
+sleep 1s
+echo $PW | sudo -S ntpdate -u 192.168.1.2
+sleep 1s
+echo "Clock synced"

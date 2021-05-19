@@ -213,6 +213,7 @@ int main(int argc, char **argv)
 	nh.getParam("geometry_name", geometry_name);
 	if(!image_savepath.empty() && !geometry_name.empty()){
 		std::string fullpath = image_savepath + geometry_name + ".csv";
+		std::cout<< "Saving to: " << fullpath << std::endl;
 		std::experimental::filesystem::remove(fullpath);
 		sleep(1);
 		aruco3_init(_RectangleSide, _MarkerSize, _MarkerSmallSize, fullpath );

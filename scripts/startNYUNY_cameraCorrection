@@ -1,0 +1,62 @@
+#!/bin/bash
+
+rm ~/lastRunProcIds2
+
+current_date_time="`date +%Y-%m-%d`"
+echo $current_date_time
+
+current_source_dir=$HOME/projects/NE_UAScodes
+cd $current_source_dir
+source $current_source_dir/devel/setup.bash
+
+mkdir -p $current_source_dir/logs
+mkdir -p $current_source_dir/logs/NYUNY_experiments
+
+rm -rf $current_source_dir/logs/NYUNY_experiments/images_latest
+mkdir -p $current_source_dir/logs/NYUNY_experiments/images_latest
+
+mkdir -p $current_source_dir/logs/NYUNY_experiments/CameraCorrection/$current_date_time
+rm $current_source_dir/logs/NYUNY_experiments/latest
+ln -s $current_source_dir/logs/NYUNY_experiments/CameraCorrection/$current_date_time $current_source_dir/logs/NYUNY_experiments/latest
+
+echo "SEND CHARACTER TO START FYLING"
+read varname
+
+sleep 1s
+
+roslaunch vrpn_client_ros sample.launch server:=192.168.1.2 &
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> ~/lastRunProcIds2
+
+sleep 5s
+
+roslaunch logging_measurements NYUNY_Correction_logger.launch &
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> ~/lastRunProcIds2
+
+sleep 5s
+
+roslaunch spinnaker_sdk_camera_driver NYUNY_v1.launch &
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> ~/lastRunProcIds2
+
+#true to run, false to stop
+rostopic pub -1 /grabbing_control std_msgs/Bool "data: true"
+
+echo "SEND CHARACTER TO STOP"
+read varname
+echo "Exit character received"
+
+for value in {1..2}
+	do 
+		echo "Stop attempt No." 
+		echo $value
+		#true to run, false to stop
+		rostopic pub -1 /grabbing_control std_msgs/Bool "data: false"
+		rostopic pub -1 /logger_control std_msgs/Bool "data: false"
+done
+
+kill $(cat ~/lastRunProcIds2)
+sleep 1s
+
+echo "Done"

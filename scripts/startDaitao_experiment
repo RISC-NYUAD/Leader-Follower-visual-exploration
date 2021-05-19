@@ -1,0 +1,72 @@
+#!/bin/bash
+
+rm ~/lastRunProcIds2
+
+current_date_time="`date +%Y-%m-%d`"
+echo $current_date_time
+
+current_source_dir=$HOME/projects/NE_UAScodes
+cd $current_source_dir
+source $current_source_dir/devel/setup.bash
+
+mkdir -p $current_source_dir/logs
+mkdir -p $current_source_dir/logs/NYUNY_experiments
+
+rm -rf $current_source_dir/logs/NYUNY_experiments/images_latest
+mkdir -p $current_source_dir/logs/NYUNY_experiments/images_latest
+
+mkdir -p $current_source_dir/logs/NYUNY_experiments/$current_date_time
+rm $current_source_dir/logs/NYUNY_experiments/latest
+ln -s $current_source_dir/logs/NYUNY_experiments/$current_date_time $current_source_dir/logs/NYUNY_experiments/latest
+
+echo "SEND CHARACTER TO START FYLING"
+read varname
+
+sleep 1s
+
+#timedatectl set-local-rtc 1 --adjust-system-clock
+#sudo ntpdate -u 192.168.1.2
+
+
+roslaunch flight_pkg NYUNY_trajectory_targetlock_Daitao.launch &
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> ~/lastRunProcIds2
+
+sleep 10s
+
+roslaunch spinnaker_sdk_camera_driver NE_acquisition_node.launch &
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> ~/lastRunProcIds2
+
+sleep 2s
+
+roslaunch logging_measurements NYUNY_logger_Daitao.launch  &
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> ~/lastRunProcIds2
+
+sleep 2s
+#true to run, false to stop
+rostopic pub -1 /grabbing_control std_msgs/Bool "data: true"
+rostopic pub -1 /logger_control std_msgs/Bool "data: true"
+sleep 10s
+rostopic pub -1 /experiment_control std_msgs/Bool "data: true"
+sleep 2s
+
+echo "SEND CHARACTER TO STOP FYLING"
+read varname
+echo "Exit character received"
+
+for value in {1..2}
+	do 
+		echo "Stop attempt No." 
+		echo $value
+		#true to run, false to stop
+		rostopic pub -1 /experiment_control std_msgs/Bool "data: false"
+		rostopic pub -1 /logger_control std_msgs/Bool "data: false"
+		rostopic pub -1 /grabbing_control std_msgs/Bool "data: false"
+done
+
+kill $(cat ~/lastRunProcIds2)
+sleep 1s
+
+echo "Done"

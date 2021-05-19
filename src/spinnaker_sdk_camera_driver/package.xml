@@ -24,9 +24,18 @@
   <depend>cv_bridge</depend>
   <depend>image_transport</depend>
   <depend>sensor_msgs</depend>
+  <depend>dynamic_reconfigure</depend>
+  
+  <depend>camera_info_manager</depend>
+  <depend>geometry_msgs</depend>
+  <depend>tf_conversions</depend>
+  <depend>eigen_conversions</depend>
+  <depend>tf</depend>
+  
   <build_depend>nodelet</build_depend>
   <exec_depend>nodelet</exec_depend>
   <exec_depend>message_runtime</exec_depend>
+  <exec_depend>message_generation</exec_depend>
   
   <export>
     <nodelet plugin="${prefix}/nodelet_plugins.xml" />

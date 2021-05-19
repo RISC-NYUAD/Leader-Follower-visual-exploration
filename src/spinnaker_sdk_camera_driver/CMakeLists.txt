@@ -8,21 +8,29 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 ###
 # camera Acquisition specific 
 ###
-# SET(OpenCV_DIR "~/github_packages/opencv/build")
 
 set(PROJECT_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include/" CACHE PATH "Project Include Directory")
 set(CUDA_USE_STATIC_CUDA_RUNTIME  OFF)
 
+find_package( Eigen3 REQUIRED )
+MESSAGE(STATUS "Eigen3 found, version: ${EIGEN3_VERSION} in dir ${EIGEN3_INCLUDE_DIR}")
+
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  std_msgs
-  message_generation
-  cv_bridge
-  image_transport
-  sensor_msgs
-  dynamic_reconfigure
-  nodelet
+	roscpp
+	std_msgs
+	message_generation
+	cv_bridge
+	image_transport
+	sensor_msgs
+	dynamic_reconfigure
+	nodelet
+	camera_info_manager
+	geometry_msgs
+	tf_conversions
+	eigen_conversions
+	tf
 )
+
 find_package(trigger_msgs)
 #find_package(PCL REQUIRED)
 
@@ -51,6 +59,9 @@ elseif(NOT Boost_FOUND)
   message("Boost not found!")
 endif()
 
+find_package(aruco REQUIRED )
+MESSAGE(STATUS "Uses ArUco version ${aruco_VERSION} in dir ${aruco_INCLUDE_DIRS}")
+
 # configure a header file to pass some of the CMake settings
 # to the source code
 configure_file (
@@ -72,12 +83,28 @@ generate_messages(
   DEPENDENCIES
   std_msgs
 )
+
 ## setting catkin_package, include_directories and libs based on architecture
 if(${CMAKE_SYSTEM_PROCESSOR} MATCHES x86_64 OR x86_32)
     catkin_package(
-    INCLUDE_DIRS include
-    CATKIN_DEPENDS roscpp std_msgs message_runtime nodelet
-    DEPENDS OpenCV LibUnwind
+		INCLUDE_DIRS include
+		CATKIN_DEPENDS 
+			roscpp 
+			std_msgs 
+			message_runtime 
+			nodelet
+			message_generation
+			cv_bridge
+			image_transport
+			sensor_msgs
+			dynamic_reconfigure
+			nodelet
+			camera_info_manager
+			geometry_msgs
+			tf_conversions
+			eigen_conversions
+			tf
+		DEPENDS OpenCV LibUnwind
     )
 
     include_directories(
@@ -91,13 +118,28 @@ if(${CMAKE_SYSTEM_PROCESSOR} MATCHES x86_64 OR x86_32)
 
     link_directories( ${Spinnaker_LIBRARIES} )
 
-    set (LIBS ${LibUnwind_LIBRARIES} ${Spinnaker_LIBRARIES} ${OpenCV_LIBS} ${Boost_GENERAL})
+    set (LIBS ${LibUnwind_LIBRARIES} ${Spinnaker_LIBRARIES} ${OpenCV_LIBS} ${Boost_GENERAL} ${aruco_LIBS})
     
 endif(${CMAKE_SYSTEM_PROCESSOR} MATCHES x86_64 OR x86_32)
 if(${CMAKE_SYSTEM_PROCESSOR} MATCHES aarch64 OR arm)
     catkin_package(
     INCLUDE_DIRS include
-    CATKIN_DEPENDS roscpp std_msgs message_runtime nodelet
+    CATKIN_DEPENDS 
+			roscpp 
+			std_msgs 
+			message_runtime 
+			nodelet
+			message_generation
+			cv_bridge
+			image_transport
+			sensor_msgs
+			dynamic_reconfigure
+			nodelet
+			camera_info_manager
+			geometry_msgs
+			tf_conversions
+			eigen_conversions
+			tf
     DEPENDS OpenCV
     )
 
@@ -111,7 +153,7 @@ if(${CMAKE_SYSTEM_PROCESSOR} MATCHES aarch64 OR arm)
 
     link_directories( ${Spinnaker_LIBRARIES} )
 
-    set (LIBS ${Spinnaker_LIBRARIES} ${OpenCV_LIBS} ${Boost_GENERAL})
+    set (LIBS ${Spinnaker_LIBRARIES} ${OpenCV_LIBS} ${Boost_GENERAL} ${aruco_LIBS})
     
 endif(${CMAKE_SYSTEM_PROCESSOR} MATCHES aarch64 OR arm)
 
@@ -128,6 +170,18 @@ target_link_libraries(acquilib ${LIBS} ${catkin_LIBRARIES})
 add_executable (acquisition_node src/acquisition_node.cpp)
 add_dependencies(acquisition_node acquilib ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_gencfg)
 target_link_libraries (acquisition_node acquilib ${LIBS} ${catkin_LIBRARIES})
+
+add_executable (NE_acquisition_node src/NE_acquisition_node.cpp src/NE_utilities.cpp)
+add_dependencies(NE_acquisition_node ${catkin_EXPORTED_TARGETS})
+target_link_libraries (NE_acquisition_node ${LIBS} ${catkin_LIBRARIES})
+
+add_executable (NE_acquisition_node_annotations src/NE_acquisition_node_annotations.cpp src/NE_utilities.cpp)
+add_dependencies(NE_acquisition_node_annotations ${catkin_EXPORTED_TARGETS})
+target_link_libraries (NE_acquisition_node_annotations ${LIBS} ${catkin_LIBRARIES})
+
+add_executable (NYUNY_v1 src/NYUNY_v1.cpp src/NE_utilities.cpp)
+add_dependencies(NYUNY_v1 acquilib ${catkin_EXPORTED_TARGETS})
+target_link_libraries (NYUNY_v1 acquilib ${LIBS} ${catkin_LIBRARIES})
 
 ## subscriber_example for subscribing as nodelet
 add_library (subscriber_example examples/subscriber_nodelet.cpp)

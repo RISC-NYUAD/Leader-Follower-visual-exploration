@@ -1,0 +1,16 @@
+<launch>
+	<!-- logger params-->
+	<arg name="trajectory_rate"	default="25"	doc="Ros_rate in Hz"/>
+	<arg name="object_name"	default="gapter1"	doc="Object name to capture in relevant topics" />
+	<arg name="target_path"	default="$(env HOME)/projects/NE_UAScodes/src/flight_pkg/cfg/Daitao_path.txt" 	doc="Path to follow" />
+	<!-- <arg_name="offset_drift"	default="0.0"	doc="Offset in m of target w.r.t drone Y, when drone is hovering" /> -->
+	
+	<!-- load the logging node -->
+	<node pkg="flight_pkg" type="NYUNY_traj_targetlock_Daitao" name="NYUNY_traj_targetlock_Daitao_$(arg object_name)" output="screen" >
+		<!-- Load parameters onto server using argument or default values above -->
+		<param name="trajectory_rate"	value="$(arg trajectory_rate)" />
+		<param name="object_name"	value="$(arg object_name)" />
+		<param name="target_path"	value="$(arg target_path)" />
+		<!-- <param name="offset_drift"	value="$(arg offset_drift)" /> -->
+	</node>
+</launch>
