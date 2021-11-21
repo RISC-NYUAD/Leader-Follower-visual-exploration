@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
     tf
     diagnostic_updater
     image_transport
+    mavros_msgs
 )
 
 find_package(Boost REQUIRED COMPONENTS thread)
@@ -20,6 +21,7 @@ catkin_package(CATKIN_DEPENDS
     message_runtime 
     roscpp 
     image_transport
+    mavros_msgs
 )
 
 include_directories(include ${catkin_INCLUDE_DIRS})
@@ -36,6 +38,9 @@ target_link_libraries(rhombi_experiment   ${catkin_LIBRARIES})
 add_executable(NYUNY_logger src/NYUNY_logger.cpp src/NE_utilities.cpp)
 target_link_libraries(NYUNY_logger   ${catkin_LIBRARIES})
 
+add_executable(Leader_Follower src/Leader_Follower.cpp src/NE_utilities.cpp)
+target_link_libraries(Leader_Follower   ${catkin_LIBRARIES})
+
 add_executable(NYUNY_logger_Daitao src/NYUNY_logger_Daitao.cpp src/NE_utilities.cpp)
 target_link_libraries(NYUNY_logger_Daitao   ${catkin_LIBRARIES})
 
@@ -44,3 +49,6 @@ target_link_libraries(NYUNY_CameraCorrection   ${catkin_LIBRARIES})
 
 add_executable(rhombi_logger src/rhombi_logger.cpp src/NE_utilities.cpp)
 target_link_libraries(rhombi_logger ${catkin_LIBRARIES})
+
+add_executable(Utku_logger_potential_landing src/Utku_logger_potential_landing.cpp src/NE_utilities.cpp)
+target_link_libraries(Utku_logger_potential_landing ${catkin_LIBRARIES})

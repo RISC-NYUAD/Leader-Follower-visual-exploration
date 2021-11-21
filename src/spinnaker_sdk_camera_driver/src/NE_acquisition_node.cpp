@@ -341,7 +341,8 @@ int AcquireImages(CameraPtr pCam, INodeMap& nodeMap, INodeMap& nodeMapTLDevice)
 					if (image_encoding != "mono8")	srcImg = cv::Mat(colsize + YPadding, rowsize + XPadding, CV_8UC3, convertedImage->GetData(), convertedImage->GetStride());
 					else	srcImg = cv::Mat(colsize + YPadding, rowsize + XPadding, CV_8UC1, convertedImage->GetData(), convertedImage->GetStride());
 					
-					if(PREVIEW)	{cv::imshow("FLIR_image",srcImg);	cv::waitKey(1);}
+					
+					if(PREVIEW)	{cv::Mat srcImg2; cv::resize(srcImg, srcImg2, cv::Size(), 0.5, 0.5);   cv::imshow("FLIR_image",srcImg2);	cv::waitKey(1);}
 				
 					//if to_ROS?
 					//5ms
@@ -584,9 +585,9 @@ int main(int argc, char** argv)
 	camList.Clear();
 	
 	// Release system
-	system->ReleaseInstance();
 	//ros::spinOnce();
 	//ros::Duration(1.0/RATE).sleep();
+	system->ReleaseInstance();
 	//ros::shutdown();
 	return 0;
 }

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(flight_pkg)
-#set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "-std=c++0x -Wno-psabi ${CMAKE_CXX_FLAGS}")
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -186,6 +186,9 @@ target_link_libraries(setHeading ${catkin_LIBRARIES})
 add_executable(simple_takeoff_land src/simple_takeoff_land.cpp src/NE_utilities.cpp)
 target_link_libraries(simple_takeoff_land ${catkin_LIBRARIES})
 
+add_executable(setpoint_raw_test src/setpoint_raw_test.cpp src/NE_utilities.cpp)
+target_link_libraries(setpoint_raw_test ${catkin_LIBRARIES})
+
 add_executable(heading_check_indoor src/heading_check_indoor.cpp src/NE_utilities.cpp)
 target_link_libraries(heading_check_indoor ${catkin_LIBRARIES})
 
@@ -212,6 +215,15 @@ target_link_libraries(staple_rectangle_outdoor6 ${catkin_LIBRARIES})
 
 add_executable(leader_follower_v1 src/leader_follower_v1.cpp src/NE_utilities.cpp)
 target_link_libraries(leader_follower_v1 ${catkin_LIBRARIES})
+
+add_executable(leader_follower_v2 src/leader_follower_v2.cpp src/NE_utilities.cpp)
+target_link_libraries(leader_follower_v2 ${catkin_LIBRARIES})
+
+add_executable(leader_follower_v3 src/leader_follower_v3.cpp src/NE_utilities.cpp)
+target_link_libraries(leader_follower_v3 ${catkin_LIBRARIES})
+
+add_executable(Utku_potential_landing src/Utku_potential_landing.cpp src/NE_utilities.cpp)
+target_link_libraries(Utku_potential_landing ${catkin_LIBRARIES})
 
 
 ## Rename C++ executable without prefix

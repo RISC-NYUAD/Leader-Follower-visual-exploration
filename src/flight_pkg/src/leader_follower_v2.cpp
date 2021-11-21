@@ -27,10 +27,15 @@ using namespace std;
 
 #define takeoff_alt 2.0
 
+std::vector<geometry_msgs::PoseStamped> prev_local_poses, prev_rhombis;
+std::vector<geometry_msgs::PoseStamped> upcoming_pose_buffer;
+uint32_t pose_buffer;
+double delay_time=0.0;
+
 //Set global variables
 mavros_msgs::State current_state;
 mavros_msgs::RCIn RC_input;
-geometry_msgs::PoseStamped Rhombi_input, initial_pose, current_pose, target_pose; //PoseOnGround, Current, Target respectively
+geometry_msgs::PoseStamped Rhombi_input, initial_pose, current_pose, target_pose; //CameraInput, PoseOnGround, Current, Target respectively
 double initial_heading, current_heading, target_heading, GYM_OFFSET; //rad
 
 bool experiment_runs;
@@ -67,6 +72,16 @@ void setDestination(geometry_msgs::Pose dist_)
 	target_pose.pose.position.x,target_pose.pose.position.y, target_pose.pose.position.z); */
 }
 
+// set position to fly to in the gym frame
+void setDestination2(geometry_msgs::Pose _current_pose, geometry_msgs::Pose _dist )
+{
+	target_pose.pose.position.x = _current_pose.position.x + _dist.position.x - follower_safe_dist;
+	target_pose.pose.position.y = _current_pose.position.y + _dist.position.y;
+	target_pose.pose.position.z = _current_pose.position.z + _dist.position.z;
+	/* ROS_INFO("Sequence: %d, From X, Y, Z : %lf, %lf, %lf, to X_T, Y_T, Z_T : %lf, %lf, %lf", sequence, current_pose.pose.position.x,current_pose.pose.position.y,current_pose.pose.position.z, 
+	target_pose.pose.position.x,target_pose.pose.position.y, target_pose.pose.position.z); */
+}
+
 //stop execution
 void start_stop_cb(const std_msgs::Bool input)
 {
@@ -80,18 +95,65 @@ void state_cb(const mavros_msgs::State::ConstPtr& msg)
 	current_state = *msg;
 }
 
+geometry_msgs::PoseStamped geometry_msgs_lerp( geometry_msgs::PoseStamped pose1, geometry_msgs::PoseStamped pose2, double ref_time){
+	double slope = ( ref_time - pose1.header.stamp.toSec()) / (pose2.header.stamp.toSec() - pose1.header.stamp.toSec());
+	geometry_msgs::PoseStamped output;
+	output.pose.position.x = NElerp(pose1.pose.position.x, pose2.pose.position.x, slope);
+	output.pose.position.y = NElerp(pose1.pose.position.y, pose2.pose.position.y, slope);
+	output.pose.position.z = NElerp(pose1.pose.position.z, pose2.pose.position.z, slope);
+	tf::Quaternion quat1, quat2;
+	tf::quaternionMsgToTF(pose1.pose.orientation, quat1);
+    double roll1, pitch1, yaw1;
+    tf::Matrix3x3(quat1).getRPY(roll1, pitch1, yaw1);
+	double roll2, pitch2, yaw2;
+	tf::quaternionMsgToTF(pose2.pose.orientation, quat2);
+    tf::Matrix3x3(quat2).getRPY(roll2, pitch2, yaw2);
+	tf::Quaternion final;
+	final.setRPY(NElerp(roll1, roll2, slope), NElerp(pitch1, pitch2, slope), NElerp(yaw1, yaw2, slope));
+	tf::quaternionTFToMsg(final , output.pose.orientation);
+	return output;
+}
+
+bool pose_lookup(std_msgs::Header msg_header, std::vector<geometry_msgs::PoseStamped> input, geometry_msgs::PoseStamped* output)
+{
+	//the time we are looking to match is in arg 1, the look up list to look into is arg 2
+	int i = 0;
+	double ref_time = msg_header.stamp.toSec();
+	//ROS_INFO("Seq number: %u", msg_header.seq);
+	while(i < input.size() && input.at(i).header.stamp.toSec() < ref_time ){ 
+		i++;
+	}
+	//ROS_INFO("i: %d, input size: %ld", i, input.size());
+	//ROS_INFO("Rhombi ref time: %lf. Local_next_pose_time: %lf", msg_header.stamp.toSec(), input.at(i).header.stamp.toSec());
+	//ROS_INFO("ROS_TIME_NOW: %lf",ros::Time::now().toSec());
+	//Interpolate 
+	if(i<2){
+		ROS_INFO("No compatible lerp match can be found. i < 2");
+		//*output = input.at(input.size()-1);
+	}
+	else
+	{
+		*output = geometry_msgs_lerp(input.at(i-1) , input.at(i), ref_time);
+		output->header = msg_header;
+		return true;
+		//ROS_INFO("Compatible lerp match found");
+		//std::cout << *output << std::endl;
+		//ROS_INFO("Before: ");
+		//std::cout << input.at(i-1) << std::endl;
+		//ROS_INFO("After: ");
+		//std::cout << input.at(i) << std::endl;
+		
+	}
+	return false;
+}
+
 //get current position of drone
 void pose_cb(const geometry_msgs::PoseStamped::ConstPtr& msg)
 {
 	current_pose = *msg;
+	if ( prev_local_poses.size() >= pose_buffer) prev_local_poses.erase(prev_local_poses.begin());
+	prev_local_poses.push_back(current_pose);
 	getHeading(current_pose.pose);
-}
-
-// Check if position and orientation defined by target are reached
-bool check_wp_reached()
-{	
-	return ((get_distance3D(target_pose.pose.position.x,target_pose.pose.position.y,target_pose.pose.position.z,
-					current_pose.pose.position.x,current_pose.pose.position.y,current_pose.pose.position.z) < pos_tolerance));
 }
 
 void rhombi_detect_cb(geometry_msgs::PoseArrayConstPtr input_poses)
@@ -104,6 +166,12 @@ void rhombi_detect_cb(geometry_msgs::PoseArrayConstPtr input_poses)
 	tf::Transform V_to_l = V_to_A * A_f_l;
 	tf::poseTFToMsg(V_to_l,Rhombi_input.pose);
 	Rhombi_input.header = input_poses->header;
+	if (prev_rhombis.size() >= pose_buffer) {
+		//prev_rhombis.erase(prev_rhombis.begin() , prev_rhombis.begin() + (prev_rhombis.size() - pose_buffer));
+		prev_rhombis.erase(prev_rhombis.begin());
+		
+	}
+	prev_rhombis.push_back(Rhombi_input);
 }
 
 void rc_feedback(mavros_msgs::RCInConstPtr RC_input_){
@@ -112,7 +180,7 @@ void rc_feedback(mavros_msgs::RCInConstPtr RC_input_){
 
 int main(int argc, char** argv)
 {
-	ros::init(argc, argv, "leader_follower_v1");
+	ros::init(argc, argv, "leader_follower_v2");
 	ros::NodeHandle nh("~");
 	//Initialization - Rate
 	int RATE = 10;
@@ -126,6 +194,9 @@ int main(int argc, char** argv)
 	//Initilization get safe distance
 	nh.getParam("follower_distance", follower_safe_dist);
 	
+	double pose_time_buffer = 0;
+	nh.getParam("pose_buffer", pose_time_buffer);
+	pose_buffer = std::floor(pose_time_buffer * RATE);
 	
 	// Initialization - Publishers/Subscribers
 	ros::ServiceClient set_mode_client = nh.serviceClient<mavros_msgs::SetMode>("/mavros/set_mode");
@@ -162,7 +233,6 @@ int main(int argc, char** argv)
 		i++;
 	}
 	GYM_OFFSET /= i;
-	GYM_OFFSET = 0;
 	ROS_INFO("the N' axis is facing: %f degrees", rad2deg(GYM_OFFSET));
 	
 	if(RC_input.channels[8] > 1000){
@@ -172,6 +242,8 @@ int main(int argc, char** argv)
 			ros::Duration(0.1).sleep();
 		}
 	}
+	
+	 std::cout << std::fixed << std::setprecision(10) <<std::endl;
 	
 	// Pre-flight - Check for and enable guided mode
 	mavros_msgs::SetMode guided_set_mode;
@@ -274,13 +346,32 @@ int main(int argc, char** argv)
 		if(Rhombi_input.header.seq!=sequence){
 			if(abs(Rhombi_input.pose.position.x-follower_safe_dist)>rhombi_tolerance || abs(Rhombi_input.pose.position.y)>rhombi_tolerance ||
 			abs(Rhombi_input.pose.position.z)>rhombi_tolerance){
-				setDestination(Rhombi_input.pose);
-				setHeading(initial_heading);
-				target_pose.header = Rhombi_input.header;
-				sequence++;
+				if(prev_rhombis.size() > 1 && prev_local_poses.size() > 1){
+					geometry_msgs::PoseStamped output, output2;
+					if (pose_lookup(Rhombi_input.header, prev_rhombis, &output) && pose_lookup(Rhombi_input.header, prev_local_poses, &output2)){	
+						setDestination2(output.pose, output2.pose);
+						setHeading(initial_heading);
+						target_pose.header = Rhombi_input.header;
+						if ( upcoming_pose_buffer.size() >= pose_buffer) upcoming_pose_buffer.erase(upcoming_pose_buffer.begin());
+						upcoming_pose_buffer.push_back(target_pose);
+						sequence = Rhombi_input.header.seq;
+					}
+				}
 			}
 		}
-		local_pos_pub.publish(target_pose);
+		//Impose time delay
+		if(upcoming_pose_buffer.size() > 1){
+			ros::Time ts = ros::Time::now();
+			int s = 0;
+			while(s < upcoming_pose_buffer.size() &&  ts.toSec() - upcoming_pose_buffer.at(s).header.stamp.toSec() < delay_time ){ 
+				s++;
+			}
+			if(s < upcoming_pose_buffer.size()){
+				local_pos_pub.publish(upcoming_pose_buffer.at(s));
+				std::cout << "Program time: " << ts.toSec() << " pose time: " << upcoming_pose_buffer.at(s).header.stamp.toSec() << std::endl << upcoming_pose_buffer.at(s) << std::endl;
+			}
+			
+		}
 		ros::spinOnce();
 		loop_rate.sleep();
 		if(RC_input.channels[8] < 1000) experiment_runs = false;
@@ -309,3 +400,4 @@ int main(int argc, char** argv)
 	}
 	return 0;
 }
+

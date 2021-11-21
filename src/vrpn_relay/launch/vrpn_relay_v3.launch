@@ -1,0 +1,14 @@
+<launch>
+  <!-- logger params-->
+  <arg name="vrpn_input_rate"	default="120"	doc="Ros_rate in Hz"/>
+  <arg name="vrpn_output_rate"	default="5"	doc="Ros_rate in Hz"/>
+  <arg name="object_name"	default="gapter1"	doc="Object name to capture in relevant topics for logging" />
+
+  <!-- load the logging node -->
+  <node pkg="vrpn_relay" type="vrpn_relay_v3" name="vrpn_relay_$(arg object_name)" output="screen" >
+		<!-- Load parameters onto server using argument or default values above -->
+		<param name="vrpn_input_rate"	value="$(arg vrpn_input_rate)" />
+		<param name="vrpn_output_rate"	value="$(arg vrpn_output_rate)" />
+		<param name="object_name"	value="$(arg object_name)" />
+  </node>
+</launch>

@@ -52,19 +52,46 @@ void solvePNP_NE(cv::Mat srcImg){
 	if(contrast != 1.0 || brightness != 0.0){
 		srcImg.convertTo(srcImg,-1,contrast,brightness);
 	}
-	std::vector<Marker> Markers = Mdetector.detect(srcImg); // find all markers in frame
-	if(Markers.size()>min_detections){ //min detections is per Rhombi but marker detectios should also be at least that
+	//Find all markers in frame
+	std::vector<Marker> Markers;
+	std::vector<Marker> MarkersFinal;
+	if(DO_CROP_IMAGE && imagePointsA.size()>0){
+		//Make sure cropping limits don't exceed image limits
+		int crop_x_start = imagePointsA[0].x-crop_width/2;
+		int crop_y_start = imagePointsA[0].y-crop_height/2;
+		if(crop_x_start<0) crop_x_start = 0;
+		if(crop_y_start<0) crop_y_start = 0;
+		if((crop_x_start + crop_width) > image_width ) crop_x_start = image_width - crop_width;
+		if((crop_y_start + crop_height) > image_height ) crop_y_start = image_height - crop_height;
+		//Crop image
+		cv::Mat cropedImage = srcImg(cv::Rect(crop_x_start,crop_y_start,crop_width,crop_height));
+		//Detect marker edges
+		Markers = Mdetector.detect(cropedImage);
+		for(auto m : Markers){
+			int id = m.id;
+			std::vector<cv::Point2f> corners;
+			for(uint8_t c=0; c<4; c++){
+				corners.push_back(cv::Point2f(m[c].x + crop_x_start, m[c].y + crop_y_start));
+			}
+			MarkersFinal.push_back(aruco::Marker(corners,id));
+		}
+		imagePointsA.empty();
+		//imshow("Cropped",cropedImage);	cv::waitKey(1);
+	}
+	else  MarkersFinal = Mdetector.detect(srcImg); 
+	
+	//Draw the markers
+	if(MarkersFinal.size()>0){ //min detections is per Rhombi but marker detectios should also be at least that
 		//Draw markers on image
 		cv::Mat imageAxes;// Do not delete dummy Mat for image saving to work
 		if(PREVIEW || SAVE_IMAGES){
 			cv::Mat imageAxes_(srcImg.size(), CV_8UC3);
 			cv::cvtColor(srcImg, imageAxes_, CV_GRAY2RGB);
 			imageAxes = imageAxes_;
-			for(auto m : Markers){
+			for(auto m : MarkersFinal){
 				m.draw(imageAxes, Scalar(0, 0, 255), 2);
 			}
 		}
-		
 		//For every different rhombi config check if marker exists and append
 		std::vector<std::vector<aruco::Marker>> RhombiMarkerDetections(MarkerRhombiGeometries_.RhombiMarkerConfigs.size());
 		for(uint8_t it1 = 0; it1 < MarkerRhombiGeometries_.RhombiMarkerConfigs.size(); it1++){
@@ -72,11 +99,14 @@ void solvePNP_NE(cv::Mat srcImg){
 			std::vector<cv::Point3d>  objectPoints;
 			std::vector<cv::Point2d>  imagePoints;
 			uint8_t num_detections = 0;
-			for(auto k: Markers){
+			for(auto k: MarkersFinal){
 				std::vector<int>::iterator it = std::find(CurrentConfig.begin(), CurrentConfig.end(), k.id);
 				if(it != CurrentConfig.end()){
-					if(DEBUG) {std::cout << "Found " << " Marker ID: " << k.id << " from Rhombi # " << (int) it1 << std::endl;}
-					int index = (k.id-1)-CurrentConfig.size()*((k.id-1)/CurrentConfig.size()); //-1 because marker ids start from 1 but config.csv from 0
+					if(DEBUG){
+						std::cout << "Found " << " Marker ID: " << k.id << " from Rhombi # " << (int) it1 << std::endl;
+					}
+					//-1 because marker ids start from 1 but config.csv from 0
+					int index = (k.id-1)-CurrentConfig.size()*((k.id-1)/CurrentConfig.size()); 
 					for(uint8_t c=0;c<4;c++){
 						imagePoints.push_back(k[c]);
 						objectPoints.push_back(Point3d(MarkerRhombiGeometries_.RhombiCornerGeometries[index][c*3+0],MarkerRhombiGeometries_.RhombiCornerGeometries[index][c*3+1],MarkerRhombiGeometries_.RhombiCornerGeometries[index][c*3+2]));
@@ -123,9 +153,11 @@ void solvePNP_NE(cv::Mat srcImg){
 						std::cout << "Rhombi r_vec: " << to_euler_xyz[0]*180/M_PI << " " << to_euler_xyz[1]*180/M_PI << " " << to_euler_xyz[2]*180/M_PI << " " << std::endl;
 						std::cout << "Rhombi t_vec: " << rtvecs[it1].tvec << std::endl << std::endl;
 					}
-					//Prepare image for preview/saving
+					//Prepare image for preview/saving or cropping techniques
+					if(PREVIEW || SAVE_IMAGES || DO_CROP_IMAGE){
+						cv::projectPoints(axisPoints, rtvecs[it1].rvec, rtvecs[it1].tvec, CamParam.CameraMatrix, CamParam.Distorsion, imagePointsA, imagePointsVelocities);
+					}
 					if(PREVIEW || SAVE_IMAGES){
-						projectPoints(axisPoints, rtvecs[it1].rvec, rtvecs[it1].tvec, CamParam.CameraMatrix, CamParam.Distorsion, imagePointsA, imagePointsVelocities);
 						// draw axis lines
 						if(inRange(0,CamParam.CamSize.width,imagePointsA[0].x) && inRange(0,CamParam.CamSize.height,imagePointsA[0].y) &&
 							inRange(0,CamParam.CamSize.width,imagePointsA[1].x) && inRange(0,CamParam.CamSize.height,imagePointsA[1].y) &&
@@ -142,7 +174,9 @@ void solvePNP_NE(cv::Mat srcImg){
 				}
 			}
 		}
-		if(PREVIEW)	{imshow("RhombiAxes",imageAxes);	cv::waitKey(1);}
+		cv::Mat image2;
+		cv::resize(imageAxes,image2,cv::Size(1024,768));
+		if(PREVIEW)	{imshow("RhombiAxes",image2);	cv::waitKey(1);}
 		if(SAVE_IMAGES)	cv::imwrite(image_savepath + std::to_string(pose_publishing.header.seq) + ".bmp",imageAxes);
 	}
 	else{
@@ -161,6 +195,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg) //(const sensor_msgs::
 			//Prepare publishing message -- Time in seconds since EPOCH - post processing required to get elapsed
 			pose_publishing.header.seq = msg->header.seq;
 			pose_publishing.header.stamp = msg->header.stamp;
+			pose_publishing.header.frame_id = object_name + std::to_string(pose_publishing.header.seq);
 			solvePNP_NE(srcImg);
 		}
 	}
@@ -188,7 +223,7 @@ int main(int argc, char **argv)
 	ros::init(argc, argv, "rhombi_detect");
 	ros::NodeHandle nh("~");
 	//Get PARAMS from server -- to do-->what if not exist
-	nh.getParam("logging_rate", RATE);
+	nh.getParam("detection_rate", RATE);
 	ros::Rate loop_rate(RATE); 
 	nh.getParam("object_name", object_name);
 	pose_publishing.header.frame_id = object_name;
@@ -198,6 +233,9 @@ int main(int argc, char **argv)
 	nh.getParam("save_images", SAVE_IMAGES);
 	nh.getParam("use_prev_rvec_tvec", USE_PREV_RVEC_TVEC);
 	nh.getParam("do_fcu_refinement", DO_FCU_REFINEMENT);
+	nh.getParam("do_crop_image", DO_CROP_IMAGE);
+	nh.getParam("crop_width", crop_width);
+	nh.getParam("crop_height", crop_height);
 	
 	nh.getParam("num_rhombis", NUM_RHOMBIS);
 	rtvecs.resize(NUM_RHOMBIS);
@@ -267,7 +305,8 @@ int main(int argc, char **argv)
 		ros::spinOnce();
 		loop_rate.sleep();
 	}
-	//Create subscriber to get Camera Info and calibration or load from file
+	
+//Create subscriber to get Camera Info and calibration or load from file
 // 	sensor_msgs::CameraInfoConstPtr _CameraInfo= ros::topic::waitForMessage<sensor_msgs::CameraInfo>("/object_name/flir/camera_info", nh);
 // 	if(_CameraInfo != NULL){
 // 		sensor_msgs::CameraInfo cam_inf=*_CameraInfo;
@@ -315,6 +354,9 @@ int main(int argc, char **argv)
     
     nh.getParam("image_height", image_height);
 	nh.getParam("image_width", image_width);
+	if(image_height < crop_height){ROS_INFO("Image_height<Cropping_height. Resetting cropping height"); crop_height = image_height;}
+	if(image_width < crop_width){ROS_INFO("Image_width<Cropping_width. Resetting cropping width"); crop_width = image_width;}
+	
     if(distort_list_provided && intrinsics_list_provided)
     CamParam.setParams(cv::Mat(3, 3, CV_64FC1, &intrinsics[0]), cv::Mat(1, 5, CV_64FC1, &distort[0]), cv::Size(image_width, image_height));
 	

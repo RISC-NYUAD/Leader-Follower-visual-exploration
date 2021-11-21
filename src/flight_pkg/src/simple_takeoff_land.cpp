@@ -28,7 +28,7 @@ std::string drone_name="Gapter1";
 
 #define NUM_POINTS 8
 
-#define AIR_TIME 30 //in seconds
+#define AIR_TIME 120 //in seconds
 
 #define RATE 30 //Hz
 

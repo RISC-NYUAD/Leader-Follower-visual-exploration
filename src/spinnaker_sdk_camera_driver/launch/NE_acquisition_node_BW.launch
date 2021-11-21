@@ -1,0 +1,26 @@
+<launch>
+  <!-- logger params-->
+  <arg name="FLIR_acquisition_rate"	default="100"		doc="Ros_rate in Hz"/>
+  <arg name="object_name"			default="gapter1"	doc="Object name to capture in relevant topics for logging" />
+  
+  <arg name="do_debug"				default="false" 	doc="Print debug messages on output" />
+  <arg name="do_preview"			default="false" 	doc="Show resulting image on screen" />
+  <arg name="save_images"			default="true" 		doc="Save resulting image to folder" />
+  <arg name="image_savepath"		default="$(env HOME)/projects/NE_UAScodes/logs/Leader_Follower/images_latest/"		doc="Path to save the images to"/>
+
+  <arg name="image_encoding"		default="mono8" 	doc="Image encoding mono8 bgr8 bgra8 rgb8 rgba8 mono16 etc." />
+  <arg name="image_to_ros"			default="true"		doc="Publish image to_ros"/>
+  
+  <!-- load the logging node -->
+  <node pkg="spinnaker_sdk_camera_driver" type="NE_acquisition_node" name="NE_acqusition_node_$(arg object_name)" output="screen" >
+		<!-- Load parameters onto server using argument or default values above -->
+		<param name="FLIR_acquisition_rate"			value="$(arg FLIR_acquisition_rate)" />
+		<param name="object_name"			value="$(arg object_name)" />
+		<param name="do_debug"				value="$(arg do_debug)" />
+		<param name="do_preview"			value="$(arg do_preview)" />
+		<param name="save_images"			value="$(arg save_images)" />
+		<param name="image_savepath"			value="$(arg image_savepath)" />
+		<param name="image_encoding"		value="$(arg image_encoding)" />
+		<param name="image_to_ros"			value="$(arg image_to_ros)" />
+  </node>
+</launch>

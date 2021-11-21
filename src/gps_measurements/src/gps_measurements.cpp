@@ -29,6 +29,7 @@ sensor_msgs::NavSatFix GPSfix, GPSfix_raw;
 sensor_msgs::TimeReference TimeReference;
 geometry_msgs::PoseStamped localPose;
 mavros_msgs::State currentState;
+double compass_heading;
 
 std::ofstream outfile;
 
@@ -92,10 +93,10 @@ void GPSraw_cb(const sensor_msgs::NavSatFix::ConstPtr& NavSatFixRaw_)
 {
 	GPSfix_raw=*NavSatFixRaw_;
 	//Logging
-	outfile << GPSfix.header.stamp <<  ";" 
-				<< (uint32_t) (GPSfix.latitude*100000000) << ";" << (uint32_t) (GPSfix.longitude*100000000) << ";" << (uint32_t) (GPSfix.altitude*1000) << ";"
-                << (uint32_t) (GPSfix_raw.latitude*100000000) << ";" << (uint32_t) (GPSfix_raw.longitude*100000000) << ";" << (uint32_t) (GPSfix_raw.altitude*1000) << ";"
-                        << localPose.header.stamp << ";"
+	outfile << GPSfix.header.stamp.toNSec() <<  ";" 
+				<< GPSfix.latitude << ";" << GPSfix.longitude << ";" << GPSfix.altitude << ";"
+                << GPSfix_raw.latitude << ";" << GPSfix_raw.longitude  << ";" << GPSfix_raw.altitude << ";" << TimeReference.time_ref.toNSec() << ";"
+                        << localPose.header.stamp.toNSec() << ";"
                             << localPose.pose.position.x << ";" << localPose.pose.position.y << ";" << localPose.pose.position.z << std::endl;
 }
 
@@ -103,6 +104,12 @@ void GPSraw_cb(const sensor_msgs::NavSatFix::ConstPtr& NavSatFixRaw_)
 void GPS_cb(const sensor_msgs::NavSatFix::ConstPtr& NavSatFix_)
 {
 	GPSfix=*NavSatFix_;
+}
+
+//get current GPS position of drone
+void compass_cb(const std_msgs::Float64ConstPtr& compass_hdg_)
+{
+	compass_heading=compass_hdg_->data;
 }
 
 //get local position output from EKF
@@ -129,6 +136,7 @@ int main(int argc, char** argv)
 	ros::Subscriber GPS_global = nh.subscribe<sensor_msgs::NavSatFix>("/mavros/global_position/global", 1, GPS_cb);
 	ros::Subscriber local_position = nh.subscribe<geometry_msgs::PoseStamped>("/mavros/local_position/pose", 1, localPose_cb);
 	ros::Subscriber current_time = nh.subscribe<sensor_msgs::TimeReference>("/mavros/time_reference", 1, time_reference_cb);
+	ros::Subscriber compass_hdg = nh.subscribe<std_msgs::Float64>("/mavros/global_position/compass_hdg",1, compass_cb);
 
 	// allow the subscribers to initialize
 	ROS_INFO("INITIALIZING...");
@@ -149,7 +157,7 @@ int main(int argc, char** argv)
 	//Initialization - Log file
 	std::string usr=get_username();
 	std::string fileName;
-	if(usr!="?") fileName="/home/"+usr+"/projects/nevangeliou_GapterUAV/logs/"+date_filename(); //try to get username, if not save to home folder
+	if(usr!="?") fileName="/home/"+usr+"/projects/NE_UAScodes/logs/"+date_filename(); //try to get username, if not save to home folder
 	else fileName=date_filename();
 	outfile.open(fileName, std::ios::out | std::ios::app);
 	if (outfile.fail()){
@@ -162,8 +170,11 @@ int main(int argc, char** argv)
 	outfile << "GPS msg time stamp"<< ";"
 				<< "GPSfix.latitude" << ";" << "GPSfix.longitude" << ";" << "GPSfix.altitude" << ";" 
 					<< "GPSfix_raw.latitude" << ";" << "GPSfix_raw.longitude" << ";" << "GPSfix_raw.altitude" << ";"
+						<< "TimeRefernce" << ";"
                         << "mavros local pose time stamp" << ";"
 						<< "Local Position(x)" << ";" <<  "y" << ";" <<  "z" << std::endl;
+							
+	outfile << std::fixed << std::setprecision(10) << std::endl;
 	std::cout<< "Saving data to: " << fileName << std::endl;
 	//MAIN LOOP
 	while (ros::ok() && !kbhit())

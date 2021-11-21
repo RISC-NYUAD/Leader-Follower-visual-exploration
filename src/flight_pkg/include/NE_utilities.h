@@ -40,4 +40,6 @@ double seconds_from_epoch(boost::posix_time::ptime const&);
 inline double deg2rad(double x) {return x*M_PI/180;}
 inline double rad2deg(double x) {return x*180/M_PI;}
 
+inline double NElerp(double a, double b, double f) { return (a * (1.0 - f)) + (b * f);}
+
 #endif

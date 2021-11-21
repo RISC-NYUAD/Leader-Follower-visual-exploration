@@ -30,6 +30,8 @@ bool PREVIEW; 				//Show image preview
 bool SAVE_IMAGES; 			//Save images to disk
 bool USE_PREV_RVEC_TVEC; 	//Use previous rvec tvec as initial guess for solvePnP
 bool DO_FCU_REFINEMENT;  	//Refine previous rvec tvec with new FCU pose
+bool DO_CROP_IMAGE;			//Choose if you want to crop the image for speed
+int crop_width, crop_height; //If cropping enabled choose the ROI
 
 int NUM_RHOMBIS;			//Number of Rhombis to expect on this experiment
 int self_rhombi;			//# of Rhombi fixed on the drone

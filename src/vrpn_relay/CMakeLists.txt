@@ -27,3 +27,6 @@ target_link_libraries(vrpn_relay   ${catkin_LIBRARIES})
 
 add_executable(vrpn_relay_v2 src/vrpn_relay_v2.cpp src/NE_utilities.cpp)
 target_link_libraries(vrpn_relay_v2   ${catkin_LIBRARIES})
+
+add_executable(vrpn_relay_v3 src/vrpn_relay_v3.cpp src/NE_utilities.cpp)
+target_link_libraries(vrpn_relay_v3   ${catkin_LIBRARIES})

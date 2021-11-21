@@ -70,14 +70,64 @@ sleep 5s
 #echo -n $! >> ~/lastRunProcIds
 #echo -n " " >> ~/lastRunProcIds
 
-echo "Press any key to exit..." &
+mkdir -p $current_source_dir/logs
+mkdir -p $current_source_dir/logs/Leader_Follower
+
+rm -rf $current_source_dir/logs/Leader_Follower/images_latest
+mkdir -p $current_source_dir/logs/Leader_Follower/images_latest
+
+mkdir -p $current_source_dir/logs/Leader_Follower/$current_date_time
+rm $current_source_dir/logs/Leader_Follower/latest
+ln -s $current_source_dir/logs/Leader_Follower/$current_date_time $current_source_dir/logs/Leader_Follower/latest
+
+sleep 5s
+
+#rosrun flight_pkg simple_takeoff_land &
+#echo -n $! >> ~/lastRunProcIds2
+#echo -n " " >> ~/lastRunProcIds2
+
+#sleep 10s
+
+roslaunch rhombi_markers rhombi_detector.launch &
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> ~/lastRunProcIds2
+
+sleep 2s
+
+roslaunch spinnaker_sdk_camera_driver NE_acquisition_node_BW.launch &
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> ~/lastRunProcIds2
+
+sleep 2s
+
+roslaunch logging_measurements leader_follower_logger.launch &
+echo -n $! >> ~/lastRunProcIds2
+echo -n " " >> ~/lastRunProcIds2
+
+sleep 2s
+#true to run, false to stop
+rostopic pub -1 /grabbing_control std_msgs/Bool "data: true"
+rostopic pub -1 /logger_control std_msgs/Bool "data: true"
+#sleep 10s
+#echo "Press button to start experiment"
+#read varname
+#sleep 15s
+#rostopic pub -1 /experiment_control std_msgs/Bool "data: true"
+#sleep 2s
+
+echo "SEND CHARACTER TO STOP FYLING"
 read varname
+echo "Exit character received"
+
 
 #for value in {1..5}
 #	do 
 #		echo "Stop attempt No." 
 #		echo $value
 #		rostopic pub /stop_execution std_msgs/Bool true
+		rostopic pub -1 /experiment_control std_msgs/Bool "data: false"
+		rostopic pub -1 /logger_control std_msgs/Bool "data: false"
+		rostopic pub -1 /grabbing_control std_msgs/Bool "data: false"
 #done
 
 echo "EXITING!!!!!!"

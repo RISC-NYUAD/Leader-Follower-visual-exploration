@@ -1,12 +1,12 @@
 <launch>
 	<!-- logger params-->
-	<arg name="logging_rate"		default="50"		doc="Ros_rate in Hz"/>
+	<arg name="detection_rate"		default="50"		doc="Ros_rate in Hz"/>
 	<arg name="object_name"			default="gapter1"	doc="Object name to capture in relevant topics for logging" />
 	
 	<arg name="do_debug"			default="false" 	doc="Print debug messages on output" />
-	<arg name="do_preview"			default="true" 		doc="Show resulting image on screen" />
-	<arg name="save_images"			default="false" 	doc="Save resulting image to folder" />
-	<arg name="image_savepath"		default="$(env HOME)/projects/NE_UAScodes/logs/Rhombi_Experiments/images_latest/"	doc="Path to save the images to"/>
+	<arg name="do_preview"			default="false" 	doc="Show resulting image on screen" />
+	<arg name="save_images"			default="true" 	doc="Save resulting image to folder" />
+	<arg name="image_savepath"		default="$(env HOME)/projects/NE_UAScodes/logs/Leader_Follower/images_latest/"	doc="Path to save the images to"/>
 	
 	<arg name="num_rhombis"			default="3" 		doc="Maximum Number of Rhombis to be detected in the image" />  
 	<arg name="self_rhombi"			default="0" 		doc="# of Rhombi fixed on the drone. Rhombi 0 has ids from 0 to 16. Rhombi 1 has ids from 16 to 33 etc. " />
@@ -15,6 +15,9 @@
 	<arg name="rhombi_gmtry_path"	default="$(find rhombi_markers)/cfg/Rhombicuboctahedron_V2" 	doc="Path for geometry to use" />>
 	<arg name="use_prev_rvec_tvec"	default="false"		doc="Use previous rvec tvec as initial guess for solvePnP" />
 	<arg name="do_fcu_refinement"	default="false" 	doc="Refine previous rvec tvec with new FCU pose" />
+	<arg name="do_crop_image"		default="true" 		doc="Crop image for faster processing" />
+	<arg name="crop_width"			default="1024" 		doc="Crop image for faster processing" />
+	<arg name="crop_height"			default="768" 		doc="Crop image for faster processing" />
 
 	<arg name="image_encoding"		default="mono8" 	doc="Image encoding" />
 	<!-- ArUco parameters -->
@@ -32,25 +35,28 @@
 		<!-- Load parameters onto server using argument or default values above -->
 		<rosparam command="load"        file="$(arg cam_calib_file)" />
 		
-		<param name="logging_rate"			value="$(arg logging_rate)" />
+		<param name="detection_rate"			value="$(arg detection_rate)" />
 		<param name="object_name"			value="$(arg object_name)" />
 		<param name="do_debug"				value="$(arg do_debug)" />
 		<param name="do_preview"			value="$(arg do_preview)" />
 		<param name="save_images"			value="$(arg save_images)" />
 		<param name="num_rhombis"			value="$(arg num_rhombis)" />
-		<param name="min_detections"			value="$(arg min_detections)" />
-		<param name="image_savepath"			value="$(arg image_savepath)" />
+		<param name="min_detections"		value="$(arg min_detections)" />
+		<param name="image_savepath"		value="$(arg image_savepath)" />
 		<param name="use_prev_rvec_tvec"	value="$(arg use_prev_rvec_tvec)" />
 		<param name="do_fcu_refinement"		value="$(arg do_fcu_refinement)" />
+		<param name="do_crop_image"			value="$(arg do_crop_image)" />
+		<param name="crop_width"			value="$(arg crop_width)" />
+		<param name="crop_height"			value="$(arg crop_height)" />
 		<param name="image_encoding"		value="$(arg image_encoding)" />
 		<param name="DETECTION_MODE"		value="$(arg DETECTION_MODE)" />
 		<param name="REFINEMENT_MODE"		value="$(arg REFINEMENT_MODE)" />
 		<param name="DICTIONARY"			value="$(arg DICTIONARY)" />
 		<param name="self_rhombi"			value="$(arg self_rhombi)" />
-		<param name="rhombi_gmtry_path"			value="$(arg rhombi_gmtry_path)" />
+		<param name="rhombi_gmtry_path"		value="$(arg rhombi_gmtry_path)" />
 		<param name="contrast"				value="$(arg contrast)" />
 		<param name="brightness"			value="$(arg brightness)" />
-		<param name="cam_calib_file"			value="$(arg cam_calib_file)" />
+		<param name="cam_calib_file"		value="$(arg cam_calib_file)" />
   </node>
 </launch>
 

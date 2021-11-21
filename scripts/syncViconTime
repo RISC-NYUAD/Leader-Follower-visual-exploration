@@ -12,6 +12,6 @@ echo $PW | sudo -S timedatectl set-local-rtc 1 --adjust-system-clock
 sleep 1s
 timedatectl set-local-rtc 1 --adjust-system-clock
 sleep 1s
-echo $PW | sudo -S ntpdate -u 192.168.1.2
+echo $PW | sudo -S ntpdate -bu 192.168.1.2
 sleep 1s
 echo "Clock synced"

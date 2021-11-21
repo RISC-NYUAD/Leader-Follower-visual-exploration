@@ -1,0 +1,20 @@
+<launch>
+	<!-- logger params-->
+	<arg name="trajectory_rate"	default="10"	doc="Ros_rate in Hz"/>
+	<arg name="object_name"	default="gapter1"	doc="Object name to capture in relevant topics" />
+	<arg name="target_path"	default="$(env HOME)/projects/NE_UAScodes/src/flight_pkg/cfg/setpoint_raw_test_path.txt" 	doc="Path to follow" />
+	
+	<!-- load the logging node -->
+	<node pkg="flight_pkg" type="setpoint_raw_test" name="setpoint_raw_test_$(arg object_name)" output="screen" >
+		<!-- Load parameters onto server using argument or default values above -->
+		<param name="trajectory_rate"	value="$(arg trajectory_rate)" />
+		<param name="object_name"	value="$(arg object_name)" />
+		<param name="target_path"	value="$(arg target_path)" />
+		<param name="offset_drift"	type="double" value="0.0" />
+		<param name="takeoff_alt"	type="double" value="1.6" />
+		
+		<param name="pos_tollerance"	type="double" value="0.2" />
+		<param name="yaw_tollerance"	type="double" value="5.0" />
+		<param name="time_tolerance"	type="double" value="20.0" />
+	</node>
+</launch>
